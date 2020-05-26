@@ -16,7 +16,7 @@ public class MainContainer extends JFrame{
     public MainContainer(){
         this.setTitle("Mon emploi du temps");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(1100,800);
+        this.setSize(1200,600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

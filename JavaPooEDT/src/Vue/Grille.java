@@ -33,6 +33,7 @@ for (int y =1; y<14; y++){
     g.drawLine(75, uniteY*y, getWidth()-75, uniteY*y);
 }
 }
+    
 
 }
 
