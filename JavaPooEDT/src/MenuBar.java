@@ -43,7 +43,7 @@ public class MenuBar extends JFrame {
   
         JMenuItem menuB = new JMenuItem(" Emploi du temps "); //Creation Sous-Menu 1
         menuA.add(menuB);
-        menuB.setIcon(new ImageIcon("Icone/Edt.png"));
+        menuB.setIcon(new ImageIcon("Icone/Edt.png")); // Image en 24x24
         menuA.addSeparator(); //Séparateur entre deux sous-menus
         
         JMenuItem menuC = new JMenuItem(" Récapitulatif des cours "); //Creation Sous-Menu 2
