@@ -19,7 +19,11 @@ public class Grille extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+                MenuBar bar = new MenuBar();
         g.setColor(Color.black);
+        
+        /// Méthode provisoire de récuppération d'heure et date. A adapter avec la récuppération depuis la base de données.
+        // On recevera une arraylist de cours qu'on affichera 
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
         long timestamp1 = timestamp.getTime(); //Timestamp forme long int
@@ -39,10 +43,8 @@ public class Grille extends JPanel {
         int uniteY = getHeight() / 12;
         
         double Ystart = (uniteY*start);
-        String Y = Double.toString(Ystart);
-
+        
         g.fillRect(uniteX * jour, (int) Ystart, uniteX, uniteY);
-        g.drawString(Y, 50,50);
 
         for (int i = 0; i < 6; i++) {
             g.drawLine(uniteX * i, 0, uniteX * i, getHeight());

@@ -21,6 +21,8 @@ class Fenetre extends JFrame{
     private JButton redButton=new JButton("Red!");
  
     public Fenetre(){
+        
+        MenuBar bar = new MenuBar();
         this.setTitle("hello");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
