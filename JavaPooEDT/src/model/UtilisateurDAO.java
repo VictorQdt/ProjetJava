@@ -10,6 +10,12 @@ package model;
  * @author Paul
  */
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class UtilisateurDAO extends DAO<Utilisateur> {
   public UtilisateurDAO(Connection conn) {
     super(conn);
@@ -23,27 +29,38 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     return false;
   }
    
-  public boolean update(Eleve obj) {
+  public boolean update(Utilisateur obj) {
     return false;
   }
    
-  public Eleve find(int id) {
-    Eleve eleve = new Eleve();      
+  public Utilisateur find(int id) {
+    Utilisateur utilisateur = new Utilisateur();      
       
-    try {
-      ResultSet result = this.connect.createStatement(
-        ResultSet.TYPE_SCROLL_INSENSITIVE,
-        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM eleve WHERE elv_id = " + id);
-      if(result.first())
-        eleve = new Eleve(
-          id,
-          result.getString("elv_nom"),
-          result.getString("elv_prenom"
-        ));         
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    return eleve;
+    ResultSet result = null;
+      try {
+          result = this.connect.createStatement(
+                  ResultSet.TYPE_SCROLL_INSENSITIVE,
+                  ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Utilisateur WHERE ID_Utilisateur = " + id);
+      } catch (SQLException ex) {
+          Logger.getLogger(UtilisateurDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      try {
+          if(result.first())
+              utilisateur = new Utilisateur(
+                      id,
+                      result.getString("email"),
+                      result.getString("pwd"),
+                      result.getString("nom"),
+                      result.getString("prenom"),
+                      result.getInt("droit")
+                      
+              );
+      } catch (SQLException ex) {
+          Logger.getLogger(UtilisateurDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    return utilisateur;
   }
+
+    
 }
 
