@@ -7,6 +7,8 @@ package Vue;
 import javax.swing.*;
 import java.awt.*;
 
+
+
 /**
  *
  * @author victo
@@ -34,7 +36,5 @@ public class MainContainer extends JFrame{
         MainContainer fen = new MainContainer();
         fen.grilleEdt();
     }
-    
-    
-    
 }
+    
