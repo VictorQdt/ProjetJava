@@ -11,19 +11,36 @@ package model;
  */
 public class Etudiant {
     
-    Utilisateur eleve;
+    Utilisateur eleve = new Utilisateur();
+    Groupe td = new Groupe();
+    
     private int nombre = 0;
-    private int id = eleve.getId();
+    private int id;
+    private int id_td;
     
-    public Etudiant (){
-        System.out.println(id);
+    public Etudiant (int id,int id_td, int nombre){
+        this.id_td = td.getId();
+        this.id = eleve.getId();
+        this.nombre = nombre;
     }
     
-    public static void main(String[] args) {
-        
-        Utilisateur eleve = new Utilisateur();
-        System.out.println(eleve.getId());
-        
+    public Etudiant () {}
+    
+    public int getID() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public int getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(int nombre) {
+        this.nombre = nombre;
+    }
+   
     
 }

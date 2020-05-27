@@ -1,6 +1,7 @@
 package Vue;
 
 
+package Vue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -19,7 +20,7 @@ public class MenuBar extends JFrame {
     
     public MenuBar() { // Constructeur de la fenetre de barre de menu
         super ("JMenuBar") ;
-        this.setSize(600,400);
+        this.setSize(1200,600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         
