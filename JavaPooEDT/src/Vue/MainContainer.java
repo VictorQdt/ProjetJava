@@ -28,7 +28,7 @@ public class MainContainer extends JFrame {
     public void grilleEdt() {
 
         Grille pan = new Grille();
-        this.setContentPane(pan);
+        this.getContentPane().add(pan);
 
     }
 
