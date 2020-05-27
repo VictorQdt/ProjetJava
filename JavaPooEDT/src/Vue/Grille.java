@@ -69,7 +69,6 @@ public class Grille extends JPanel {
                 case 5:
                     g.drawString("Samedi", (uniteX * i) + (uniteX * 3)/8 +  larg2,  larg3 + larg3/2);
                      break;
-
             }
 
             g.drawLine((uniteX * i) + larg2, larg2, (uniteX * i) + larg2, (uniteY * 13) + larg2);
@@ -86,24 +85,7 @@ public class Grille extends JPanel {
 
     public void displayCourses() {
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
-        long timestamp1 = timestamp.getTime(); //Timestamp forme long int
-
-        Date date = new Date(timestamp.getTime()); //Création de la date en fonction 
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        int jour = calendar.get(Calendar.DAY_OF_WEEK) - 2;
-        int heure = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-
-        double start = (heure + (minute * 0.016667) - 12);
-
-        int uniteX = getWidth() / 6;
-        int uniteY = getHeight() / 12;
-
-        System.out.print(jour + " " + " " + heure + " " + minute + " " + start);
+        
 
     }
 

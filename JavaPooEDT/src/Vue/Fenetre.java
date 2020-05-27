@@ -22,7 +22,7 @@ class Fenetre extends JFrame{
  
     public Fenetre(){
         
-        MenuBar bar = new MenuBar();
+        
         this.setTitle("hello");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);

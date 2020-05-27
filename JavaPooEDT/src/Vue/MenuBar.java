@@ -1,3 +1,5 @@
+package Vue;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -35,7 +37,7 @@ public class MenuBar extends JFrame {
                 
     }
 
-    private JMenuBar creerMenuBar() { // Constructeur de la barre de menu
+    public JMenuBar creerMenuBar() { // Constructeur de la barre de menu
         JMenuBar menuBar = new JMenuBar();
         
         /// PREMIER MENU ET SES SOUS-MENUS
