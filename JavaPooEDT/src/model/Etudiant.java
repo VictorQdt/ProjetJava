@@ -21,7 +21,8 @@ public class Etudiant {
     
     public static void main(String[] args) {
         
-        System.out.println(id);
+        Utilisateur eleve = new Utilisateur();
+        System.out.println(eleve.getId());
         
     }
     
