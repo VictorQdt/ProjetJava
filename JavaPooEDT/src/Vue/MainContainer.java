@@ -4,47 +4,41 @@
  * and open the template in the editor.
  */
 package Vue;
+
 import javax.swing.*;
 import java.awt.*;
-
-
 
 /**
  *
  * @author victo
  */
-<<<<<<< HEAD
-public class MainContainer extends JFrame {
 
+    public class MainContainer extends JFrame {
 
-    public MainContainer() {
-        MenuBar bar = new MenuBar();
-        JMenuBar menuBar = bar.creerMenuBar();
-        this.setJMenuBar(menuBar);
-=======
-public class MainContainer extends JFrame{
-      
-    public MainContainer(){
->>>>>>> 279db4f08c9cc0e68d03e35128c915bbad4710e5
-        this.setTitle("Mon emploi du temps");
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(1200,600);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-        this.setAlwaysOnTop(false);
+        public MainContainer() {
+            MenuBar bar = new MenuBar();
+            JMenuBar menuBar = bar.creerMenuBar();
+            this.setJMenuBar(menuBar);
+            this.setTitle("Mon emploi du temps");
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setSize(1200, 600);
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.setVisible(true);
+            this.setAlwaysOnTop(false);
+        }
+
+        public void grilleEdt() {
+
+            Grille pan = new Grille();
+            this.setContentPane(pan);
+
+        }
+
+        public static void main(String[] args) {
+
+            MainContainer fen = new MainContainer();
+            fen.grilleEdt();
+        }
+
     }
-    
-    public void grilleEdt(){
-        
-        Grille pan = new Grille();
-        this.setContentPane(pan);
-        
-    }
-       
-    public static void main(String[] args){
-        MainContainer fen = new MainContainer();
-        fen.grilleEdt();
-    }
-}
-    
