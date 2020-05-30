@@ -23,10 +23,14 @@ public class Connexion {
      * Attributs prives : connexion JDBC, statement, ordre requete et resultat
      * requete
      */
-    private final Connection conn;
-    private final Statement stmt;
+    private static Connection conn;
+    private Statement stmt;
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
+    
+    private String url = "jdbc:mysql://localhost:3308/edt?autoReconnect=true&useSSL=false";
+    private String user = "root";
+    private String passwd = "";
     /**
      * ArrayList public pour les tables
      */
@@ -54,7 +58,7 @@ public class Connexion {
         Class.forName("com.mysql.jdbc.Driver");
 
         // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-        String urlDatabase = "jdbc:mysql://localhost:3308/" + nameDatabase;
+        String urlDatabase = "jdbc:mysql://localhost:3308/" + nameDatabase + "?autoReconnect=true&useSSL=false";
        // String urlDatabase = "jdbc:mysql://localhost:3308/jps?characterEncoding=latin1";
 
         //création d'une connexion JDBC à la base 
@@ -62,6 +66,26 @@ public class Connexion {
 
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
+        
+    }
+    
+    public Connexion(){
+        if(conn == null){
+            try{
+            conn = DriverManager.getConnection(url, user, passwd);
+            stmt = conn.createStatement();
+        }catch (SQLException e){
+        }
+        }      
+    }
+    
+    public static Connection getInstance(){
+            if(conn == null){
+                new Connexion();
+            } else {
+            }
+            return conn;
+        
     }
 
 
@@ -129,6 +153,30 @@ public class Connexion {
         // Retourner l'ArrayList
         return liste;
     }
+    
+    
+    public Statement getStmt(){
+        return stmt;
+    }
+    
+    public ArrayList<Object> rechercheCours() throws SQLException{
+        rset = stmt.executeQuery("select date, duree, ID_Cours from seance");
+        rsetMeta = rset.getMetaData();
+        int nbRes = rsetMeta.getColumnCount();
+        
+        ArrayList<Object> liste;
+        liste = new ArrayList<>();
+        //String champs = "";
+        // Ajouter tous les champs du resultat dans l'ArrayList
+        while(rset.next()){
+            for (int i = 0; i < nbRes; i++) {
+            //champs = rset.getObject(i+1).toString();
+            liste.add(rset.getObject(i+1));
+        }
+        }
+        
+        return liste;
+    }
 
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
@@ -170,6 +218,8 @@ public class Connexion {
         // Retourner l'ArrayList
         return liste;
     }
+    
+    
 
     /**
      * Méthode qui execute une requete de MAJ en parametre

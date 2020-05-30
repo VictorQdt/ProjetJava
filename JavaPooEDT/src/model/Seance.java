@@ -16,20 +16,27 @@ public class Seance {
     
     private int id = 0;
     private int semaine = 0;
-    private String date = "";
-    private String heure_d = "";
-    private String heure_f = "";
+    private long date = 0;
+    private float duree = 0;
     private int etat;
     private int id_cours;
     private int id_type;
     
-    public Seance (int id, int semaine, String date, String heure_d, 
-            String heure_f, int etat, int id_cours,int id_type){
+    /**
+     * Constructeur de séance
+     * @param id
+     * @param semaine
+     * @param date
+     * @param duree
+     * @param etat
+     * @param id_cours
+     * @param id_type
+     */
+    public Seance (int id, int semaine, long date, float duree, int etat, int id_cours,int id_type){
         this.id = id;
         this.semaine = semaine;
         this.date = date;
-        this.heure_d = heure_d;
-        this.heure_f = heure_f;
+        this.duree = duree ;
         this.etat = etat;
         this.id_cours = cours.getId();
         this.id_type = type.getId();
@@ -43,6 +50,10 @@ public class Seance {
 
     public void setId(int id) {
       this.id = id;
+    }
+    
+    public float getDuree(){
+        return duree;
     }
     
     
