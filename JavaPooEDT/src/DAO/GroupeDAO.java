@@ -29,7 +29,7 @@ public class GroupeDAO extends DAO<Groupe>{
         Groupe groupe = new Groupe();
         
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance where ID_Groupe = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select * from groupe where ID_Groupe = " + id);
             if(rset.first()){
                 groupe = new Groupe(id, rset.getString("nom"), rset.getInt("ID_Promotion"));
             }

@@ -29,7 +29,7 @@ public class PromotionDAO extends DAO<Promotion>{
         Promotion promo = new Promotion();
         
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance where ID_Promotion = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select * from promotion where ID_Promotion = " + id);
             if(rset.first()){
                 promo = new Promotion(id, rset.getString("nom"));
             }

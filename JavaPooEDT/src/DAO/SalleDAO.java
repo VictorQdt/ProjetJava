@@ -29,7 +29,7 @@ public class SalleDAO extends DAO<Salle>{
         Salle salle = new Salle();
         
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance where ID_Salle = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select * from salle where ID_Salle = " + id);
             if(rset.first()){
                 salle = new Salle(id, rset.getInt("capcite"), rset.getString("nom"),rset.getInt("ID_Site"));
             }
