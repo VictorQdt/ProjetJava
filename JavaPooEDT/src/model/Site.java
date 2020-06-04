@@ -34,4 +34,6 @@ public class Site {
     public void setNom(String nom) {
       this.nom = nom;
     }
+    
+    
 }

@@ -22,7 +22,7 @@ public class Salle {
         this.id = id;
         this.nom = nom;
         this.capacite = capacite;
-        this.id_site = lieu.getId();
+        this.id_site = id_site;
     }
     
     public Salle () {}
@@ -41,4 +41,30 @@ public class Salle {
     public void setNom(String nom) {
       this.nom = nom;
     }
+
+    public Site getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(Site lieu) {
+        this.lieu = lieu;
+    }
+
+    public int getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
+    }
+
+    public int getId_site() {
+        return id_site;
+    }
+
+    public void setId_site(int id_site) {
+        this.id_site = id_site;
+    }
+    
+    
 }

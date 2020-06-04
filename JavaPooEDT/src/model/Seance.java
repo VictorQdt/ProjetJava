@@ -11,8 +11,6 @@ package model;
  */
 public class Seance {
     
-    Cours cours = new Cours();
-    Type_Cours type = new Type_Cours();
     
     private int id = 0;
     private int semaine = 0;
@@ -38,8 +36,8 @@ public class Seance {
         this.date = date;
         this.duree = duree ;
         this.etat = etat;
-        this.id_cours = cours.getId();
-        this.id_type = type.getId();
+        this.id_cours = id_cours;
+        this.id_type = id_type;
     }
     
     public Seance () {}
@@ -55,6 +53,48 @@ public class Seance {
     public float getDuree(){
         return duree;
     }
+
+    public int getSemaine() {
+        return semaine;
+    }
+
+    public void setSemaine(int semaine) {
+        this.semaine = semaine;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
+    public int getId_cours() {
+        return id_cours;
+    }
+
+    public void setId_cours(int id_cours) {
+        this.id_cours = id_cours;
+    }
+
+    public int getId_type() {
+        return id_type;
+    }
+
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
+    
+    
     
     
 }

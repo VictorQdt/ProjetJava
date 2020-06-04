@@ -69,17 +69,19 @@ public class Connexion {
         
     }
     
-    public Connexion(){
-        if(conn == null){
-            try{
+    /**
+     * Constructeur sans paramètres qui lance une nouvelle connexion si celle là n'a pas déjà été établie.
+     */
+    public Connexion() throws SQLException{
+        
+
             conn = DriverManager.getConnection(url, user, passwd);
             stmt = conn.createStatement();
-        }catch (SQLException e){
-        }
-        }      
+
+    
     }
     
-    public static Connection getInstance(){
+    public static Connection getInstance() throws SQLException{
             if(conn == null){
                 new Connexion();
             } else {
@@ -154,7 +156,10 @@ public class Connexion {
         return liste;
     }
     
-    
+    /**
+     * Fonction qui retourne le statement
+     * @return stmt
+     */
     public Statement getStmt(){
         return stmt;
     }

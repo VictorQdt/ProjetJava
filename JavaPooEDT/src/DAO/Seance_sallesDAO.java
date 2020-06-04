@@ -70,12 +70,12 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
      * @param idSeance
      * @return 
      */
-    public ArrayList<Integer> findEnseignants(int idSeance) {
+    public ArrayList<Integer> findSalles(int idSeance) {
         ArrayList<Integer> liste;
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Salle from seance_salles where ID_Seaance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Salle from seance_salles where ID_Seance = " + idSeance);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 

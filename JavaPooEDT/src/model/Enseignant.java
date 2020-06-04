@@ -10,17 +10,34 @@ package model;
  * @author Paul
  */
 public class Enseignant {
-    Utilisateur prof = new Utilisateur();
-    Cours matiere = new Cours();
+
     
     private int id;
     private int id_cours;
     
     public Enseignant (int id, int id_cours){
-        this.id = prof.getId();
-        this.id_cours = matiere.getId();
+        this.id = id;
+        this.id_cours = id_cours;
 
     }
     
     public Enseignant () {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId_cours() {
+        return id_cours;
+    }
+
+    public void setId_cours(int id_cours) {
+        this.id_cours = id_cours;
+    }
+    
+    
 }

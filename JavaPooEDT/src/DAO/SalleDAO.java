@@ -28,14 +28,20 @@ public class SalleDAO extends DAO<Salle>{
     public Salle find(int id){
         Salle salle = new Salle();
         
+        
         try {
             ResultSet rset = con.getStmt().executeQuery("select * from salle where ID_Salle = " + id);
             if(rset.first()){
-                salle = new Salle(id, rset.getInt("capcite"), rset.getString("nom"),rset.getInt("ID_Site"));
+                
+                int cap = rset.getInt("capacite");
+                String nom = rset.getString("nom");
+                int idsite = rset.getInt("ID_Site");
+                salle = new Salle(id, cap,nom, idsite);
+                
             }
         } catch (SQLException ex) {
         }
-        
+           
         return salle;
     }
     

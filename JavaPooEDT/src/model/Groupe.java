@@ -11,19 +11,29 @@ package model;
  */
 public class Groupe {
     
-    Promotion promo = new Promotion();
+
     
     private int id = 0;
     private String nom = "";
     private int id_promo;
     
     public Groupe (int id, String nom, int id_promo){
-        this.id_promo = promo.getId();
+        this.id_promo = id_promo;
         this.id = id;
         this.nom = nom;
     }
     
     public Groupe () {}
+
+    public int getId_promo() {
+        return id_promo;
+    }
+
+    public void setId_promo(int id_promo) {
+        this.id_promo = id_promo;
+    }
+    
+    
     
     public int getId() {
         return id;
@@ -39,5 +49,7 @@ public class Groupe {
     public void setNom(String nom) {
       this.nom = nom;
     }
+    
+    
     
 }

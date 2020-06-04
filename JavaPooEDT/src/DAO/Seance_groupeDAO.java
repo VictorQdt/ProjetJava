@@ -47,7 +47,7 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_groupe where ID_Utilisateur = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_groupe where ID_Groupe = " + id);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -75,7 +75,7 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Groupe from senace_groupe where ID_Seaance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Groupe from seance_groupe where ID_Seance = " + idSeance);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 

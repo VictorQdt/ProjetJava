@@ -7,6 +7,7 @@ package Controlleur;
 
 import DAO.SeanceDAO;
 import DAO.DAO;
+import DAO.UtilisateurDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,9 +23,7 @@ public class Test {
     public static void main(String[] args){
         
         
-        SeanceDAO seanceDao = new SeanceDAO(new Connexion());
-        Seance seance = seanceDao.find(1);
-        System.out.println(seance.getDuree());
+        
         
         
     }

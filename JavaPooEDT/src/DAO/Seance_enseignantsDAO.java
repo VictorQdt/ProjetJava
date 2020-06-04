@@ -26,7 +26,7 @@ public class Seance_enseignantsDAO extends DAO<Seance_enseignant> {
         Seance_enseignant seance_enseignant = new Seance_enseignant();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance_enseignants where ID_Utilisateur = " + id + " and ID_Seance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select * from seance_enseignants where ID_Enseignant = " + id + " and ID_Seance = " + idSeance);
             if (rset.first()) {
                 seance_enseignant = new Seance_enseignant(id, rset.getInt("ID_Seance"));
             }
@@ -47,7 +47,7 @@ public class Seance_enseignantsDAO extends DAO<Seance_enseignant> {
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_enseignants where ID_Utilisateur = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_enseignants where ID_Enseignant = " + id);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -75,7 +75,7 @@ public class Seance_enseignantsDAO extends DAO<Seance_enseignant> {
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Utilisateur from seance_enseignants where ID_Seaance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Enseignant from seance_enseignants where ID_Seance = " + idSeance);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 

@@ -23,6 +23,24 @@ public class Seance_groupe {
         this.ID_Seance = ID_Seance;
         this.ID_Groupe = ID_Groupe;
     }
+
+    public int getID_Seance() {
+        return ID_Seance;
+    }
+
+    public void setID_Seance(int ID_Seance) {
+        this.ID_Seance = ID_Seance;
+    }
+
+    public int getID_Groupe() {
+        return ID_Groupe;
+    }
+
+    public void setID_Groupe(int ID_Groupe) {
+        this.ID_Groupe = ID_Groupe;
+    }
+    
+    
     
     
 }

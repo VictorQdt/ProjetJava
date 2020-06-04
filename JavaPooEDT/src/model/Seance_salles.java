@@ -23,5 +23,21 @@ public class Seance_salles {
         this.ID_Seance = ID_Seance;
         this.ID_Salle = ID_Salle;
     }
+
+    public int getID_Seance() {
+        return ID_Seance;
+    }
+
+    public void setID_Seance(int ID_Seance) {
+        this.ID_Seance = ID_Seance;
+    }
+
+    public int getID_Salle() {
+        return ID_Salle;
+    }
+
+    public void setID_Salle(int ID_Salle) {
+        this.ID_Salle = ID_Salle;
+    }
     
 }

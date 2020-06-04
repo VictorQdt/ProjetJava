@@ -6,6 +6,7 @@
 package DAO;
 
 import Controlleur.Connexion;
+import Controlleur.Connexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

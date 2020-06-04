@@ -26,7 +26,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
         Enseignant enseignant = new Enseignant();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from enseignant where ID_Utilisateur = " + id + " and ID_Cours = " + idCours);
+            ResultSet rset = con.getStmt().executeQuery("select * from enseignant where ID_Enseignant = " + id + " and ID_Cours = " + idCours);
             if (rset.first()) {
                 enseignant = new Enseignant(id, rset.getInt("ID_Cours"));
             }
@@ -47,7 +47,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Cours from enseignant where ID_Utilisateur = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Cours from enseignant where ID_Enseignant = " + id);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -75,7 +75,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Utilisateur from enseignant where ID_Cours = " + idCours);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Enseignant from enseignant where ID_Cours = " + idCours);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
