@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import model.Utilisateur;
 
 
 /**
@@ -22,8 +23,11 @@ import java.util.Date;
 public class MainContainer extends JFrame {
 
     private static final long serialVersionUID = 1L;
+    int idUtilisateur;
+    
+    
 
-    public MainContainer() {
+    public MainContainer(int idUtilisateur) {
         MenuBar bar = new MenuBar();
         JMenuBar menuBar = bar.creerMenuBar();
         this.setJMenuBar(menuBar);
@@ -34,42 +38,41 @@ public class MainContainer extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setAlwaysOnTop(false);
-        
-        
+        this.idUtilisateur = idUtilisateur;
+    }
+    
+    public MainContainer(){
         
     }
 
-    public void grilleEdt() {
+    public int getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
+    
+    
+    public void grilleEdt(Utilisateur user22) {
         
        
-       EDTEleve edt = new EDTEleve(1,0);
+       EDTGrille edt = new EDTGrille(user22.getId(),user22.getDroit());
        
        //edt.afficher();
        //this.setContentPane(edt);
       // edt.afficher(edt.getWidth(), edt.getHeight());
       //PaintEDT paint = new PaintEDT();
       //paint.add(paint.ajout());
-      edt.removeAll();
+      //edt.removeAll();
       
       this.setContentPane(edt);
       this.revalidate();
       //this.add(paint.ajout());
-      
-
-      
-      
-
-      
+   
     }
     
 
-    public static void main(String[] args) {
-
-        MainContainer fen = new MainContainer();
-        
-        fen.grilleEdt();
-        
-    }
     
 
 }

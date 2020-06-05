@@ -10,21 +10,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.*;
+import model.Cours;
+import model.Utilisateur;
 
 /**
  *
  * @author victo
  */
-public class EDTEleve extends JPanel{
+public class EDTGrille extends JPanel{
 
     private static final long serialVersionUID = 1L;
     
@@ -32,7 +31,7 @@ public class EDTEleve extends JPanel{
     private int nbWeek;
     private final Calendar calendar = Calendar.getInstance();
     private String infos22;
-   
+    private int droitUser;
     
 
     public int getIdUser() {
@@ -51,14 +50,14 @@ public class EDTEleve extends JPanel{
         this.nbWeek = nbWeek;
     }
     
-    public EDTEleve(int idUser, int nbWeek){
+    public EDTGrille(int idUser, int droit){
         this.idUser = idUser;
-        this.nbWeek = nbWeek;
+        this.droitUser = droit;
         this.setLayout(null);
         
     }
     
-    public EDTEleve(){
+    public EDTGrille(){
         
         repaint();
        
@@ -77,13 +76,25 @@ public class EDTEleve extends JPanel{
     @Override
     public void paintComponent(Graphics g) {
         
-        super.paintComponent(g);
+       super.paintComponent(g);
        this.removeAll();
         
         Grille grille = new Grille();
         grille.paintGrille(g, getWidth(), getHeight());
                
-        
+        paintEDTGrille(g, getWidth(), getHeight(), droitUser);
+       
+       
+    }
+    
+    /**
+     * Fonction d'ajout graphique des cours sur l'emploi du temps
+     * @param g le Graphics utilisé par paintComponent
+     * @param x x qui sera remplacé par getWidth()
+     * @param y y qui sera ramplacé par getHeight()
+     * @param user L'utilisateur
+     */
+    public void paintEDTGrille(Graphics g, int x, int y, int droit){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
         long timestamp1 = timestamp.getTime(); //Timestamp forme long int
 
@@ -93,17 +104,28 @@ public class EDTEleve extends JPanel{
         int larg2 = larg / 2;
         int larg3 = larg2 / 2;
 
-        int uniteX = (getWidth() - larg) / 6;
-        int uniteY = (getHeight()- larg) / 13;
+        int uniteX = (x - larg) / 6;
+        int uniteY = (y- larg) / 13;
 
         ArrayList<Object> liste;
         liste = new ArrayList<>();
+        int droit1 = 1;
 
-        InfosCours infos = new InfosCours(); /// Méthode provisoire de récuppération d'heure et date. A adapter avec la récuppération depuis la base de données.
+        InfosCours infos = new InfosCours(); 
         // On recevera une arraylist de cours qu'on affichera
         
         try{
-            liste = infos.rechercheCoursEtudiant(1);
+            switch(droit){
+               
+                case 3 :
+                    liste = infos.rechercheCoursProf(idUser);
+                    break;
+                case 4 :
+                    liste = infos.rechercheCoursEtudiant(idUser);
+                    break;
+                default :
+                    break;
+            }
         }catch(SQLException e){
             
         }
@@ -127,21 +149,15 @@ public class EDTEleve extends JPanel{
             int jour = calendar.get(Calendar.DAY_OF_WEEK) - 2;
             int heure = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
+            int semaine = calendar.get(Calendar.WEEK_OF_YEAR);
             double start = (heure + (minute * 0.016667) - 8);
             
             double Ystart = (uniteY * start);
             
             i = 1; // Durée
-            float duree = (float) test.get(i);
+            float duree = (float) test.get(i); //Duree
             
-            i = 2; // Etat
-            int id = (int) test.get(i);
-            if (id % 2 == 0) {
-                
-                g.setColor(Color.red);
-            } else {
-                g.setColor(Color.BLUE);
-            }
+           
             g.fillRect((uniteX * jour) + larg2, ((int) Ystart) + larg2, uniteX, (int) (uniteY * duree));
             ArrayList<String> listeInfos;
             listeInfos = new ArrayList<>();
@@ -149,19 +165,29 @@ public class EDTEleve extends JPanel{
             i = 3;
             
             String phrase;
+            String phrase2;
             phrase = "<html><div style='text-align:center'>" + (String) test.get(i) + "<br>";
+            phrase2 = phrase;
             
             i=4;
             
             listeInfos = (ArrayList<String>) test.get(i);
             for (int h=0; h<listeInfos.size(); h++){
+                if(h <= 2){
+                phrase2 = phrase2 + listeInfos.get(h);
+                listeInfos = (ArrayList<String>) test.get(i+1);
+                phrase2 = phrase2 + " (" + listeInfos.get(h) + ") ";
+                if (h==2){
+                    phrase2 = phrase2 + "(...)";
+                }
+                }
                 phrase = phrase + listeInfos.get(h);
                 listeInfos = (ArrayList<String>) test.get(i+1);
                 phrase = phrase + " (" + listeInfos.get(h) + ") ";
             }
             
             phrase = phrase + "<br>";
-            
+            phrase2 = phrase2 + "<br>";
             i=6;
             
             
@@ -169,6 +195,17 @@ public class EDTEleve extends JPanel{
             listeCap = new ArrayList<>();
             
              for (int h=0; h<listeInfos.size(); h++){
+                if(h<=2){
+                    listeInfos = (ArrayList<String>) test.get(i);
+                phrase2 = phrase2 + listeInfos.get(h);
+                listeCap = (ArrayList<Integer>) test.get(i+1);
+                phrase2 = phrase2 + " (" + listeCap.get(h) + ") ";
+                listeInfos = (ArrayList<String>) test.get(i+2);
+                phrase2 = phrase2 + listeInfos.get(h) + " ";
+                if (h==2){
+                    phrase2 = phrase2 + "(...)";
+                }
+                }
                 listeInfos = (ArrayList<String>) test.get(i);
                 phrase = phrase + listeInfos.get(h);
                 listeCap = (ArrayList<Integer>) test.get(i+1);
@@ -178,36 +215,66 @@ public class EDTEleve extends JPanel{
             }
             
             phrase = phrase + "<br>"; 
-            
+           
+            phrase2 = phrase2 + "<br>";
             i = 9;
             
             listeInfos = (ArrayList<String>) test.get(i);
             
             for (int j = 0; j<listeInfos.size(); j++){
+                if(j<=2){
+                    phrase2 = phrase2 + listeInfos.get(j);
+                }
                 phrase = phrase + listeInfos.get(j);
             }
              
             g.setColor(Color.black);
             g.setFont(new Font("TimesRoman", Font.BOLD, (getHeight()*getWidth())/100000));
-                    phrase = phrase + "</div></html>";
-            //drawString(g,phrase, (uniteX * jour) + larg2 + 5, ((int) Ystart) + larg2 + 3);
+            phrase = phrase + "</div></html>";
+            phrase2 = phrase2 + "</div></html>";
             
             
-            JLabel lab = new JLabel(phrase,SwingConstants.CENTER);
+            Cours cours = (Cours) test.get(10);
+            int idCours = cours.getId();
+            Colours genColor = new Colours();
+            Color couleur = genColor.generateColor(idCours);
+                    
+                    
+             i = 2; // Etat
+            int etat = (int) test.get(i);
+            if (etat == 0) {
+                
+            JLabel lab = new JLabel(phrase2,SwingConstants.CENTER);
             lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
             lab.setOpaque(true);
-            lab.setBackground(Color.CYAN);
+            lab.setBackground(couleur);
             lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart) + larg2, uniteX-1, (int) (uniteY * duree));
-            lab.setToolTipText("<html>je fais des test on va bien voir <br> et la ca marche ?</html>");
+            lab.setToolTipText(phrase);
             add(lab);
+              
+            } else {
+                JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>ANNULÉ</div></html>",SwingConstants.CENTER);
+                lab2.setOpaque(true);
+                lab2.setBackground(Color.WHITE);
+                lab2.setForeground(Color.RED);
+                lab2.setBounds((uniteX * jour) + larg2+uniteX/10, ((int) Ystart) + larg2 + uniteY/10, uniteX-2*uniteX/10, (int) uniteY - 6*uniteY/10);
+                add(lab2);
+                JLabel lab = new JLabel((String) test.get(3),SwingConstants.CENTER);
+            lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
+            lab.setOpaque(true);
+            lab.setBackground(couleur);
+            lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart) + larg2, uniteX-1, (int) (uniteY * duree));
+            lab.setToolTipText("Ce cours a été annulé");
+            add(lab);
+            }
+            
+            
             
             liste.remove(0);
             
         }
-       
+        
     }
-    
-    
   
     
 }
