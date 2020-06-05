@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package Vue;
-
-import Controlleur.InfosCours;
 import javax.swing.*;
 import java.awt.*;
+
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -16,10 +15,14 @@ import java.util.Date;
 import model.Utilisateur;
 
 
+
+
+
 /**
  *
  * @author victo
  */
+
 public class MainContainer extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -28,16 +31,18 @@ public class MainContainer extends JFrame {
     
 
     public MainContainer(int idUtilisateur) {
+
         MenuBar bar = new MenuBar();
-        JMenuBar menuBar = bar.creerMenuBar();
-        this.setJMenuBar(menuBar);
+        JMenuBar test = bar.creerMenuBar();
+        this.setJMenuBar(test);
         this.setTitle("Mon emploi du temps");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(1500,750);
+        this.setSize(1200,600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setAlwaysOnTop(false);
+
         this.idUtilisateur = idUtilisateur;
     }
     
@@ -72,7 +77,7 @@ public class MainContainer extends JFrame {
    
     }
     
-
-    
+       
 
 }
+    
