@@ -22,10 +22,6 @@ public class Utilisateur {
   private String prenom = "";
   //Droit de l'utilisateur
   private int droit = 0;
-  
-  public Utilisateur(){
-      
-  }
    
   public Utilisateur (int id, String email, String pwd, String nom, 
           String prenom, int droit) {
@@ -36,6 +32,8 @@ public class Utilisateur {
     this.prenom = prenom;
     this.droit = droit;
   }
+  
+  public Utilisateur () {}
      
   public int getId() {
     return id;
@@ -84,4 +82,5 @@ public class Utilisateur {
   public void setPwd(String pwd) {
     this.pwd = pwd;
   }  
+  
 }
