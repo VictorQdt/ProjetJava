@@ -16,6 +16,9 @@ import java.awt.*;
 public class MainContainer extends JFrame{
       
     public MainContainer(){
+        MenuBar bar = new MenuBar();
+        JMenuBar test = bar.creerMenuBar();
+        this.setJMenuBar(test);
         this.setTitle("Mon emploi du temps");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1200,600);

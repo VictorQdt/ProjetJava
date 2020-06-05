@@ -1,5 +1,7 @@
 
 package Vue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -36,20 +38,50 @@ public class MenuBar extends JFrame {
                 
     }
 
-    private JMenuBar creerMenuBar() { // Constructeur de la barre de menu
+    JMenuBar creerMenuBar() { // Constructeur de la barre de menu
         JMenuBar menuBar = new JMenuBar();
         
         /// PREMIER MENU ET SES SOUS-MENUS
         JMenu menuA = new JMenu (" Cours "); //Creation du 1er menu
   
+        /////////////////////////EMPLOI DU TEMPS/////////////////////////
         JMenuItem menuB = new JMenuItem(" Emploi du temps "); //Creation Sous-Menu 1
         menuA.add(menuB);
         menuB.setIcon(new ImageIcon("Icone/Edt.png")); // Image en 24x24
-        menuA.addSeparator(); //Séparateur entre deux sous-menus
+        menuB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                /* Action a mettre en fct de la où on va*/
+            }
+        });
+  
         
-        JMenuItem menuC = new JMenuItem(" Récapitulatif des cours "); //Creation Sous-Menu 2
+         ///////////////////////// RECAP DES COURS/////////////////////////
+        JMenuItem menuC = new JMenuItem(" Récapitulatif des cours "); 
+        
         menuA.add(menuC);
         menuC.setIcon(new ImageIcon("Icone/Recap.png"));
+        menuC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                /* Action a mettre en fct de la où on va*/
+            }
+        });
+        
+          /////////////////////////QUITTER/////////////////////////
+        menuA.addSeparator();
+        JMenuItem menuQ = new JMenuItem(" Quitter "); // QUITTER
+        menuA.add(menuQ);
+        menuQ.setIcon(new ImageIcon("Icone/exit.png"));
+        menuQ.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                System.exit(0);
+            }
+        });
+        
         
         menuBar.add(menuA ); //Ajout du 1er menu
         
