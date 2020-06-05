@@ -71,6 +71,7 @@ public class Connexion {
     
     /**
      * Constructeur sans paramètres qui lance une nouvelle connexion si celle là n'a pas déjà été établie.
+     * @throws java.sql.SQLException
      */
     public Connexion() throws SQLException{
         

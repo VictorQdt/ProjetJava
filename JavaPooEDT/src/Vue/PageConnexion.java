@@ -18,6 +18,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Utilisateur;
 
 
@@ -33,12 +35,27 @@ public class PageConnexion extends JFrame {
     private JLabel lblPwd = new JLabel("Mot de passe :");
     private  JButton b = new JButton ("Se connecter");
     
-    Connexion connect = new Connexion();
-    UtilisateurDAO identifiant = new UtilisateurDAO(connect);
-    Utilisateur utilisateur = new Utilisateur();
+    Connexion connect;
+    UtilisateurDAO identifiant;
+    Utilisateur utilisateur;
+    int idUser;
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    
     
 
   public PageConnexion(){
+        try {
+            connect = new Connexion();
+        } catch (SQLException ex) {}
+      identifiant = new UtilisateurDAO(connect);
+      utilisateur = new Utilisateur();
     this.setTitle("PageConnexion");
     this.setSize(1200, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,14 +75,23 @@ public class PageConnexion extends JFrame {
   }       
 
   class BoutonListener implements ActionListener{
+    @Override
     public void actionPerformed(ActionEvent e) {
       
       utilisateur = identifiant.findLogin(txtUsername.getText(), txtPwd.getText());
       if( utilisateur.getId() != 0){
           //afficher la fenêtre de l'emploi du temps
-          //return utilisateur;
+          setIdUser(utilisateur.getId());
+          
+          dispose();
       }
     }
+  }
+  
+  public MainContainer newFen(int id){
+      MainContainer fen = new MainContainer();
+      fen = new MainContainer(id);
+      return fen;
   }
     
    public static void main(String[] args) {

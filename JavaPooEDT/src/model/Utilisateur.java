@@ -32,6 +32,10 @@ public class Utilisateur {
     this.prenom = prenom;
     this.droit = droit;
   }
+
+    public int getDroit() {
+        return droit;
+    }
   
   public Utilisateur () {}
      
