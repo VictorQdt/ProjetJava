@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vue;
+import Controlleur.Semaine;
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,6 +28,8 @@ public class MainContainer extends JFrame {
 
     private static final long serialVersionUID = 1L;
     int idUtilisateur;
+    Semaine NmSemaine = new Semaine();
+    int idSemaine = NmSemaine.getWeek(0);
     
     
 
@@ -58,6 +61,14 @@ public class MainContainer extends JFrame {
         this.idUtilisateur = idUtilisateur;
     }
     
+    public int getIdSemaine() {
+        return idSemaine;
+    }
+
+    public void setIdSemaine(int idSemaine) {
+        this.idSemaine = idSemaine;
+    }
+    
     
     public void grilleEdt(Utilisateur user22) {
         
@@ -78,6 +89,5 @@ public class MainContainer extends JFrame {
     }
     
        
-
 }
     

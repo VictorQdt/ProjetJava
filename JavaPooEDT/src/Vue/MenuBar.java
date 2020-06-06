@@ -1,5 +1,6 @@
 
 package Vue;
+import Controlleur.Semaine;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -72,6 +73,9 @@ public class MenuBar extends JFrame {
                  //Action a mettre en fct de la où on va
             }
         });
+        
+        
+        
         
         JMenuItem affichage = new JMenuItem(" Affichage "); 
         
@@ -186,26 +190,67 @@ public class MenuBar extends JFrame {
             }
         });
         
-    // String choix="Administrateur";  
-     String choix="Administrateur";  
+        
+        JMenu menuSemaine = new JMenu (" Choix semaine "); //Creation du 2eme menu
+  
+        /////////////////////////CHOIX SEMAINE/////////////////////////
+        JMenuItem choix1 = new JMenuItem(" Semaine actuelle "); //Creation Sous-Menu 1
+        menuSemaine.add(choix1);
+        
+        JMenuItem choix2 = new JMenuItem(" Semaine précédente "); //Creation Sous-Menu 1
+        menuSemaine.add(choix2);
+        
+        JMenuItem choix3 = new JMenuItem(" Semaine suivante "); //Creation Sous-Menu 1
+        menuSemaine.add(choix3);
+        
+         MainContainer fen = new MainContainer();
+        
+        choix1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                Semaine semaine = new Semaine();
+                int id_semaine = semaine.getWeek(0);
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+        choix2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                int id_semaine = fen.getIdSemaine() - 1;
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+        choix3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                int id_semaine = fen.getIdSemaine() + 1;
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+     String choix="Etudiant";  
    switch(choix){
        
        case "Administrateur" :
-        menuBar.add(menuAdmin ); //Ajout du menu Etudiant
+        menuBar.add(menuAdmin );
+           //Ajout du menu Etudiant
         break;
        case "Etudiant" :
         menuBar.add(menuA );
         break;
         
    }
-        
+        menuBar.add(menuSemaine );
         return menuBar;
    
    }
         
-         
-        
+             
     }
+        
+    
 
 
 
