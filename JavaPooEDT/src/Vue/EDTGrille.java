@@ -103,7 +103,7 @@ public class EDTGrille extends JPanel{
         int larg = 150;
         int larg2 = larg / 2;
         int larg3 = larg2 / 2;
-
+        
         int uniteX = (x - larg) / 6;
         int uniteY = (y- larg) / 13;
 

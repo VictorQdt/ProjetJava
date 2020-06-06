@@ -6,6 +6,7 @@
 package Controlleur;
 
 import DAO.UtilisateurDAO;
+import Vue.ListeEDT;
 import Vue.MainContainer;
 import Vue.PageConnexion;
 import java.sql.SQLException;
@@ -56,8 +57,8 @@ public class Main {
             user = userDAO.find(co.getIdUser());
             
             MainContainer fenetre = new MainContainer(user.getId());
-            fenetre.grilleEdt(user);
-            
+            //fenetre.grilleEdt(user);
+            fenetre.listeEDT(user);
                        
         }
     }

@@ -10,13 +10,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import model.Cours;
 
@@ -24,12 +28,42 @@ import model.Cours;
  *
  * @author victo
  */
-public class ListeEDT extends JPanel{
-    
+public class ListeEDT extends JPanel {
+
     int idUser;
     Calendar calendar = Calendar.getInstance();
-    
-     public void paintEDTGrille(Graphics g, int x, int y, int droit){
+
+    public ListeEDT() {
+        repaint();
+    }
+
+    /*public ListeEDT(int identifiant) {
+        this.idUser = identifiant;
+        
+        this.setLayout(null);
+    }*/
+
+    @Override
+    public void paintComponent(Graphics g) {
+        //this.removeAll();
+        super.paintComponent(g);
+
+        //paintEDTListe(0, 0, 3);
+
+    }
+
+    public ListeEDT(/*Graphics g,*/int identifiant, int droit) {
+
+        this.idUser = identifiant;
+        
+        
+        int compteurLun = 0;
+        int compteurMar = 0;
+        int compteurMer = 0;
+        int compteurJeu = 0;
+        int compteurVen = 0;
+        int compteurSam = 0;
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
         long timestamp1 = timestamp.getTime(); //Timestamp forme long int
 
@@ -39,176 +73,242 @@ public class ListeEDT extends JPanel{
         int larg2 = larg / 2;
         int larg3 = larg2 / 2;
 
-        int uniteX = (x - larg) / 6;
-        int uniteY = (y- larg) / 13;
+        
 
         ArrayList<Object> liste;
         liste = new ArrayList<>();
-        int droit1 = 1;
+        int droit1 = 3;
 
-        InfosCours infos = new InfosCours(); 
+        InfosCours infos = new InfosCours();
         // On recevera une arraylist de cours qu'on affichera
-        
-        try{
-            switch(droit){
-               
-                case 3 :
+
+        try {
+            switch (droit) {
+
+                case 3:
                     liste = infos.rechercheCoursProf(idUser);
+
                     break;
-                case 4 :
+                case 4:
                     liste = infos.rechercheCoursEtudiant(idUser);
                     break;
-                default :
+                default:
                     break;
             }
-        }catch(SQLException e){
-            
+        } catch (SQLException e) {
+
         }
+        
+        this.setLayout(new GridLayout(liste.size()+6,1));
+
+        ArrayList<Object> lundi;
+        lundi = new ArrayList<>();
+
+        ArrayList<Object> mardi;
+        mardi = new ArrayList<>();
+
+        ArrayList<Object> mercredi;
+        mercredi = new ArrayList<>();
+
+        ArrayList<Object> jeudi;
+        jeudi = new ArrayList<>();
+
+        ArrayList<Object> vendredi;
+        vendredi = new ArrayList<>();
+
+        ArrayList<Object> samedi;
+        samedi = new ArrayList<>();
 
         while (!liste.isEmpty()) {
-            
+
+            ArrayList<Object> test;
+            test = new ArrayList<>();
+
+            test = (ArrayList<Object>) liste.get(0);
+
+            long time1 = (long) test.get(0); // Date
+            Timestamp time = new Timestamp(time1);
+
+            Date t = new Date(time.getTime());
+            calendar.setTime(t);
+            int jour = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+            switch (jour) {
+                case 1:
+                    lundi.add(liste.get(0));
+                    compteurLun++;
+                    break;
+                case 2:
+                    mardi.add(liste.get(0));
+                    compteurMar++;
+                    break;
+                case 3:
+                    mercredi.add(liste.get(0));
+                    compteurMer++;
+                    break;
+                case 4:
+                    jeudi.add(liste.get(0));
+                    compteurJeu++;
+                    break;
+                case 5:
+                    vendredi.add(liste.get(0));
+                    compteurVen++;
+                    break;
+                case 6:
+                    samedi.add(liste.get(0));
+                    compteurSam++;
+                    break;
+                default:
+                    break;
+                    
+            }
            
-            int i = 0;
             
+
+            liste.remove(0);
+
+        }
+        JLabel lun = new JLabel("Lundi");
+        lun.setBackground(Color.YELLOW);
+        lun.setOpaque(true);
+        add(lun);
+        ajoutCours(lundi);
+        JLabel mar = new JLabel("Mardi");
+        mar.setBackground(Color.YELLOW);
+        mar.setOpaque(true);
+        add(mar);
+        ajoutCours(mardi);
+        JLabel mer = new JLabel("Mercredi");
+        mer.setBackground(Color.YELLOW);
+        mer.setOpaque(true);
+        add(mer);
+        ajoutCours(mercredi);
+        JLabel jeu = new JLabel("Jeudi");
+        jeu.setBackground(Color.YELLOW);
+        jeu.setOpaque(true);
+        add(jeu);
+        ajoutCours(jeudi);
+        JLabel ven = new JLabel("Vendredi");
+        ven.setBackground(Color.YELLOW);
+        ven.setOpaque(true);
+        add(ven);
+        ajoutCours(vendredi);
+        JLabel sam = new JLabel("Samedi");
+        sam.setBackground(Color.YELLOW);
+        sam.setOpaque(true);
+        add(sam);
+    }
+    
+    
+    public void ajoutCours(ArrayList<Object> liste){
+            
+            while(!liste.isEmpty()){
+        
             ArrayList<Object> test;
             test = new ArrayList<>();
             
-            test = (ArrayList<Object>) liste.get(i);
+            test = (ArrayList<Object>) liste.get(0);
             
+            String horaire;
             
-            long time1 = (long) test.get(i); // Date
+            long time1 = (long) test.get(0); // Date
             Timestamp time = new Timestamp(time1);
-            
+
             Date t = new Date(time.getTime());
             calendar.setTime(t);
-            int jour = calendar.get(Calendar.DAY_OF_WEEK) - 2;
-            int heure = calendar.get(Calendar.HOUR_OF_DAY);
-            int minute = calendar.get(Calendar.MINUTE);
-            int semaine = calendar.get(Calendar.WEEK_OF_YEAR);
-            double start = (heure + (minute * 0.016667) - 8);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int min = calendar.get(Calendar.MINUTE);
             
-            double Ystart = (uniteY * start);
+            horaire = String.valueOf(hour) + "h" + String.valueOf(min) + " - ";
             
-            i = 1; // Durée
+            int i = 1; // Durée
             float duree = (float) test.get(i); //Duree
+            horaire = horaire + String.valueOf(duree) + "h - ";
             
-           
-           
             ArrayList<String> listeInfos;
             listeInfos = new ArrayList<>();
-            
+
             i = 3;
-            
+
             String phrase;
             String phrase2;
-            phrase = "<html><div style='text-align:center'>" + (String) test.get(i) + "<br>";
+            phrase = "<html>" + (String) test.get(i) + " - ";
+            phrase += horaire;
             phrase2 = phrase;
-            
-            i=4;
-            
+
+            i = 4;
+
             listeInfos = (ArrayList<String>) test.get(i);
-            for (int h=0; h<listeInfos.size(); h++){
-                if(h <= 2){
-                phrase2 = phrase2 + listeInfos.get(h);
-                listeInfos = (ArrayList<String>) test.get(i+1);
-                phrase2 = phrase2 + " (" + listeInfos.get(h) + ") ";
-                if (h==2){
-                    phrase2 = phrase2 + "(...)";
-                }
-                }
+            for (int h = 0; h < listeInfos.size(); h++) {
+                
                 phrase = phrase + listeInfos.get(h);
-                listeInfos = (ArrayList<String>) test.get(i+1);
+                listeInfos = (ArrayList<String>) test.get(i + 1);
                 phrase = phrase + " (" + listeInfos.get(h) + ") ";
             }
-            
-            phrase = phrase + "<br>";
-            phrase2 = phrase2 + "<br>";
-            i=6;
-            
-            
+
+            phrase = phrase + " - ";
+            phrase2 = phrase2 + " - ";
+            i = 6;
+
             ArrayList<Integer> listeCap;
             listeCap = new ArrayList<>();
-            
-             for (int h=0; h<listeInfos.size(); h++){
-                if(h<=2){
-                    listeInfos = (ArrayList<String>) test.get(i);
-                phrase2 = phrase2 + listeInfos.get(h);
-                listeCap = (ArrayList<Integer>) test.get(i+1);
-                phrase2 = phrase2 + " (" + listeCap.get(h) + ") ";
-                listeInfos = (ArrayList<String>) test.get(i+2);
-                phrase2 = phrase2 + listeInfos.get(h) + " ";
-                if (h==2){
-                    phrase2 = phrase2 + "(...)";
-                }
-                }
+
+            for (int h = 0; h < listeInfos.size(); h++) {
+                
                 listeInfos = (ArrayList<String>) test.get(i);
                 phrase = phrase + listeInfos.get(h);
-                listeCap = (ArrayList<Integer>) test.get(i+1);
+                listeCap = (ArrayList<Integer>) test.get(i + 1);
                 phrase = phrase + " (" + listeCap.get(h) + ") ";
-                listeInfos = (ArrayList<String>) test.get(i+2);
+                listeInfos = (ArrayList<String>) test.get(i + 2);
                 phrase = phrase + listeInfos.get(h) + " ";
             }
-            
-            phrase = phrase + "<br>"; 
-           
-            phrase2 = phrase2 + "<br>";
+
+            phrase = phrase + " - ";
+
+            phrase2 = phrase2 + " - ";
             i = 9;
-            
+
             listeInfos = (ArrayList<String>) test.get(i);
-            
-            for (int j = 0; j<listeInfos.size(); j++){
-                if(j<=2){
+
+            for (int j = 0; j < listeInfos.size(); j++) {
+                if (j <= 2) {
                     phrase2 = phrase2 + listeInfos.get(j);
                 }
                 phrase = phrase + listeInfos.get(j);
             }
-             
-            g.setColor(Color.black);
-            g.setFont(new Font("TimesRoman", Font.BOLD, (getHeight()*getWidth())/100000));
-            phrase = phrase + "</div></html>";
-            phrase2 = phrase2 + "</div></html>";
+
+            //g.setColor(Color.black);
+            //g.setFont(new Font("TimesRoman", Font.BOLD, (getHeight() * getWidth()) / 100000));
             
-            
+            phrase2 = phrase2 + "</html>";
+
             Cours cours = (Cours) test.get(10);
             int idCours = cours.getId();
             Colours genColor = new Colours();
             Color couleur = genColor.generateColor(idCours);
-                    
-                    
-             i = 2; // Etat
+
+            i = 2; // Etat
             int etat = (int) test.get(i);
             if (etat == 0) {
                 
-            JLabel lab = new JLabel(phrase2,SwingConstants.CENTER);
-            lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
-            lab.setOpaque(true);
-            lab.setBackground(couleur);
-            lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart) + larg2, uniteX-1, (int) (uniteY * duree));
-            lab.setToolTipText(phrase);
-            add(lab);
-              
+                phrase = phrase + "</html>";
+
+                JLabel lab = new JLabel(phrase, SwingConstants.CENTER);
+                lab.setOpaque(true);
+                lab.setBackground(couleur);
+                lab.setToolTipText(phrase);
+               add(lab);
+
             } else {
-                JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>ANNULÉ</div></html>",SwingConstants.CENTER);
-                lab2.setOpaque(true);
-                lab2.setBackground(Color.WHITE);
-                lab2.setForeground(Color.RED);
-                lab2.setBounds((uniteX * jour) + larg2+uniteX/10, ((int) Ystart) + larg2 + uniteY/10, uniteX-2*uniteX/10, (int) uniteY - 6*uniteY/10);
-                add(lab2);
-                JLabel lab = new JLabel((String) test.get(3),SwingConstants.CENTER);
-            lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
-            lab.setOpaque(true);
-            lab.setBackground(couleur);
-            lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart)+1 + larg2, uniteX-1, (int) (uniteY * duree)-1);
-            lab.setToolTipText("Ce cours a été annulé");
-            add(lab);
+                
+                String phrase3 = phrase + " - ANNULE </html>";           
+                JLabel lab = new JLabel(phrase3, SwingConstants.CENTER);
+                lab.setOpaque(true);
+                lab.setBackground(couleur);
+                lab.setToolTipText("Ce cours a été annulé");
+                add(lab);
             }
-            
-            
-            
-            liste.remove(0);
-            
-        }
-        
+        liste.remove(0);
     }
-    
+
+}
 }

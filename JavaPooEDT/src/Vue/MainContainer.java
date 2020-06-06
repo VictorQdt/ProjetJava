@@ -42,7 +42,6 @@ public class MainContainer extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setAlwaysOnTop(false);
-        this.setResizable(false);
         this.idUtilisateur = idUtilisateur;
     }
     
@@ -62,19 +61,20 @@ public class MainContainer extends JFrame {
     public void grilleEdt(Utilisateur user22) {
         
        
-       EDTGrille edt = new EDTGrille(user22.getId(),user22.getDroit());
-       
-       //edt.afficher();
-       //this.setContentPane(edt);
-      // edt.afficher(edt.getWidth(), edt.getHeight());
-      //PaintEDT paint = new PaintEDT();
-      //paint.add(paint.ajout());
-      //edt.removeAll();
-      
+      EDTGrille edt = new EDTGrille(user22.getId(),user22.getDroit());
       this.setContentPane(edt);
       this.revalidate();
-      //this.add(paint.ajout());
    
+    }
+    
+    public void listeEDT(Utilisateur userrr){
+        
+        ListeEDT liste = new ListeEDT(userrr.getId(),userrr.getDroit());
+        JScrollPane pane = new JScrollPane(liste);
+        pane.setVerticalScrollBarPolicy(
+        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.add(pane,BorderLayout.CENTER);
+        this.revalidate();
     }
     
        
