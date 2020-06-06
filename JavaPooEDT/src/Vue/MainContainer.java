@@ -89,12 +89,5 @@ public class MainContainer extends JFrame {
     }
     
        
-   public static void main(String[] args) {
-
-           MainContainer fen = new MainContainer();
-            fen = new MainContainer(1);
-    
-            
-    }
 }
     

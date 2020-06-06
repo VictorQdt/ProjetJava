@@ -186,7 +186,6 @@ public class MenuBar extends JFrame {
                 Semaine semaine = new Semaine();
                 int id_semaine = semaine.getWeek(0);
                 fen.setIdSemaine(id_semaine);
-                System.out.println(id_semaine);
             }
         });
         
@@ -195,7 +194,6 @@ public class MenuBar extends JFrame {
             public void actionPerformed(ActionEvent ev) {
                 int id_semaine = fen.getIdSemaine() - 1;
                 fen.setIdSemaine(id_semaine);
-                System.out.println(id_semaine);
             }
         });
         
@@ -204,7 +202,6 @@ public class MenuBar extends JFrame {
             public void actionPerformed(ActionEvent ev) {
                 int id_semaine = fen.getIdSemaine() + 1;
                 fen.setIdSemaine(id_semaine);
-                System.out.println(id_semaine);
             }
         });
         
