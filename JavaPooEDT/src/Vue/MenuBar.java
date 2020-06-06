@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
@@ -41,6 +42,8 @@ public class MenuBar extends JFrame {
     JMenuBar creerMenuBar() { // Constructeur de la barre de menu
         JMenuBar menuBar = new JMenuBar();
         
+        // MENU ETUDIANT & PROF
+        
         /// PREMIER MENU ET SES SOUS-MENUS
         JMenu menuA = new JMenu (" Cours "); //Creation du 1er menu
   
@@ -52,7 +55,7 @@ public class MenuBar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ev) 
             {
-                /* Action a mettre en fct de la où on va*/
+                 //Action a mettre en fct de la où on va
             }
         });
   
@@ -66,9 +69,31 @@ public class MenuBar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ev) 
             {
-                /* Action a mettre en fct de la où on va*/
+                 //Action a mettre en fct de la où on va
             }
         });
+        
+        JMenuItem affichage = new JMenuItem(" Affichage "); 
+        
+        menuA.add(affichage);
+       
+        //affichage.setIcon(new ImageIcon("Icone/Recap.png"));
+        affichage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                  String[] display = {"Par semaine", "Par jour", "Par défaut"};
+                    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+                    String nom = (String)jop.showInputDialog(null, 
+                     "Veuillez choisir le type d'affichage",
+                    "Affichage de l'emploi du temps",
+                       JOptionPane.QUESTION_MESSAGE,
+                    null,
+                     display,
+                    display[2]);
+            }
+        });
+      
         
           /////////////////////////QUITTER/////////////////////////
         menuA.addSeparator();
@@ -83,25 +108,80 @@ public class MenuBar extends JFrame {
         });
         
         
-        menuBar.add(menuA ); //Ajout du 1er menu
-        
-        /// DEUXIEME MENU ET SES SOUS-MENUS
-        JMenu MenuD = new JMenu (" Menu 2 "); //Creation du 1er menu
+        //MENU ADMIN
+        JMenu menuAdmin = new JMenu (" Cours "); //Creation du 1er menu
   
-        JMenuItem menuE = new JMenuItem(" Sous-menu 2.1 "); //Creation Sous-Menu 1
-        MenuD.add(menuE);
         
-        MenuD.addSeparator(); //Séparateur entre deux sous-menus
+        JMenuItem Ajouter = new JMenuItem(" Ajouter un cours"); //Creation Sous-Menu 1
+        menuAdmin.add(Ajouter);
+        //menuB.setIcon(new ImageIcon("Icone/ .png")); // Image en 24x24
+        Ajouter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                 //Action a mettre en fct de la où on va
+            }
+        });
+  
         
-        JMenuItem menuF = new JMenuItem(" Sous-menu 2.2 "); //Creation Sous-Menu 2
-        MenuD.add(menuF);
+      
+        JMenuItem Modifier = new JMenuItem(" Modifier un cours "); 
         
-        menuBar.add(MenuD ); //Ajout du 1er menu
+        menuAdmin.add(Modifier);
+        //menuC.setIcon(new ImageIcon("Icone/ .png"));
+        Modifier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                 //Action a mettre en fct de la où on va
+            }
+            });
+            
+         JMenuItem Annuler = new JMenuItem(" Annuler un cours "); 
         
-        return menuBar; //MenuD & MenuE... a renommer en fonction de leur nom defs
+        menuAdmin.add(Annuler);
+        //menuC.setIcon(new ImageIcon("Icone/Recap.png"));
+        Annuler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) 
+            {
+                // Action a mettre en fct de la où on va
+            }
+            });
+        
+        
+        menuAdmin.addSeparator();
+        JMenuItem Quitter = new JMenuItem(" Quitter "); // QUITTER
+        menuAdmin.add(Quitter);
+        Quitter.setIcon(new ImageIcon("Icone/exit.png"));
+        Quitter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                System.exit(0);
+            }
+        });
+        
+     String choix="Etudiant";  
+   switch(choix){
+       
+       case "Administrateur" :
+        menuBar.add(menuAdmin ); //Ajout du menu Etudiant
+        break;
+       case "Etudiant" :
+        menuBar.add(menuA );
+        break;
+   }
+        
+        return menuBar;
+   
+   }
+        
+         
         
     }
-     
-}
+
+
+
+
 
 
