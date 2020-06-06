@@ -1,13 +1,20 @@
 
 package Vue;
+import Controlleur.Semaine;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
@@ -73,11 +80,14 @@ public class MenuBar extends JFrame {
             }
         });
         
+        
+        
+        
         JMenuItem affichage = new JMenuItem(" Affichage "); 
         
         menuA.add(affichage);
        
-        //affichage.setIcon(new ImageIcon("Icone/Recap.png"));
+        affichage.setIcon(new ImageIcon("Icone/affochage.png"));
         affichage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) 
@@ -103,7 +113,13 @@ public class MenuBar extends JFrame {
         menuQ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                System.exit(0);
+                JOptionPane jop = new JOptionPane();			
+                    int option = jop.showConfirmDialog(null, "Voulez-vous quitter l'emploi du temps ?", "Arrêt de l'application", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                if(option == JOptionPane.YES_OPTION)
+                {
+                     System.exit(0);
+                }
             }
         });
         
@@ -114,21 +130,22 @@ public class MenuBar extends JFrame {
         
         JMenuItem Ajouter = new JMenuItem(" Ajouter un cours"); //Creation Sous-Menu 1
         menuAdmin.add(Ajouter);
-        //menuB.setIcon(new ImageIcon("Icone/ .png")); // Image en 24x24
+        Ajouter.setIcon(new ImageIcon("Icone/add.png")); // Image en 24x24
         Ajouter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) 
             {
-                 //Action a mettre en fct de la où on va
+                Fenetre fen = new Fenetre();
             }
+   
         });
-  
-        
+    
+    
       
         JMenuItem Modifier = new JMenuItem(" Modifier un cours "); 
         
         menuAdmin.add(Modifier);
-        //menuC.setIcon(new ImageIcon("Icone/ .png"));
+        Modifier.setIcon(new ImageIcon("Icone/edit.png"));
         Modifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) 
@@ -140,7 +157,7 @@ public class MenuBar extends JFrame {
          JMenuItem Annuler = new JMenuItem(" Annuler un cours "); 
         
         menuAdmin.add(Annuler);
-        //menuC.setIcon(new ImageIcon("Icone/Recap.png"));
+        Annuler.setIcon(new ImageIcon("Icone/cancel.png"));
         Annuler.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) 
@@ -157,28 +174,77 @@ public class MenuBar extends JFrame {
         Quitter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                System.exit(0);
+                JOptionPane jop = new JOptionPane();			
+                    int option = jop.showConfirmDialog(null, "Voulez-vous quitter l'emploi du temps ?", "Arrêt de l'application", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                if(option == JOptionPane.YES_OPTION)
+                {
+                     System.exit(0);
+                }
             }
         });
         
-     String choix="Etudiant";  
+        
+        JMenu menuSemaine = new JMenu (" Choix semaine "); //Creation du 2eme menu
+  
+        /////////////////////////CHOIX SEMAINE/////////////////////////
+        JMenuItem choix1 = new JMenuItem(" Semaine actuelle "); //Creation Sous-Menu 1
+        menuSemaine.add(choix1);
+        
+        JMenuItem choix2 = new JMenuItem(" Semaine précédente "); //Creation Sous-Menu 1
+        menuSemaine.add(choix2);
+        
+        JMenuItem choix3 = new JMenuItem(" Semaine suivante "); //Creation Sous-Menu 1
+        menuSemaine.add(choix3);
+        
+         MainContainer fen = new MainContainer();
+        
+        choix1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                Semaine semaine = new Semaine();
+                int id_semaine = semaine.getWeek(0);
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+        choix2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                int id_semaine = fen.getIdSemaine() - 1;
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+        choix3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                int id_semaine = fen.getIdSemaine() + 1;
+                fen.setIdSemaine(id_semaine);
+            }
+        });
+        
+     String choix="Administrateur";  
    switch(choix){
        
        case "Administrateur" :
-        menuBar.add(menuAdmin ); //Ajout du menu Etudiant
+        menuBar.add(menuAdmin );
+           //Ajout du menu Etudiant
         break;
        case "Etudiant" :
         menuBar.add(menuA );
         break;
-   }
         
+   }
+        menuBar.add(menuSemaine );
         return menuBar;
    
    }
         
-         
-        
+             
     }
+        
+    
 
 
 
