@@ -1,14 +1,20 @@
 
 package Vue;
 import Controlleur.Semaine;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
@@ -129,24 +135,12 @@ public class MenuBar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ev) 
             {
-                 String[] display = {"Par semaine", "Par jour", "Par défaut"};
-                    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
-                    String nom = (String)jop.showInputDialog(null, 
-                     "Veuillez choisir le type d'affichage",
-                    "Affichage de l'emploi du temps",
-                       JOptionPane.QUESTION_MESSAGE,
-                    null,
-                     display,
-                    display[2]);
-                    
-                    
-                    
-                    
-                
+                Fenetre fen = new Fenetre();
             }
+   
         });
-  
-        
+    
+    
       
         JMenuItem Modifier = new JMenuItem(" Modifier un cours "); 
         
@@ -230,7 +224,7 @@ public class MenuBar extends JFrame {
             }
         });
         
-     String choix="Etudiant";  
+     String choix="Administrateur";  
    switch(choix){
        
        case "Administrateur" :
