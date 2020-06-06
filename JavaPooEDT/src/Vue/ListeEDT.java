@@ -15,86 +15,21 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import model.Cours;
-import model.Utilisateur;
 
 /**
  *
  * @author victo
  */
-public class EDTGrille extends JPanel{
-
-    private static final long serialVersionUID = 1L;
+public class ListeEDT extends JPanel{
     
-    private int idUser;
-    private int nbWeek;
-    private final Calendar calendar = Calendar.getInstance();
-    private String infos22;
-    private int droitUser;
+    int idUser;
+    Calendar calendar = Calendar.getInstance();
     
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public int getNbWeek() {
-        return nbWeek;
-    }
-
-    public void setNbWeek(int nbWeek) {
-        this.nbWeek = nbWeek;
-    }
-    
-    public EDTGrille(int idUser, int droit){
-        this.idUser = idUser;
-        this.droitUser = droit;
-        this.setLayout(null);
-        
-    }
-    
-    public EDTGrille(){
-        
-        repaint();
-       
-    }
-    
-    /**
-     * Fonction de aioobe sur stackoverflow https://stackoverflow.com/questions/4413132/problems-with-newline-in-graphics2d-drawstring qui permet le retour à la ligne dans les drawstring
-     * @param g
-     */
-    void drawString(Graphics g, String text, int x, int y) {
-    for (String line : text.split("\n"))
-        g.drawString(line, x, y += g.getFontMetrics().getHeight()); 
-}
-    
-    
-    @Override
-    public void paintComponent(Graphics g) {
-        
-       super.paintComponent(g);
-       this.removeAll();
-        
-        Grille grille = new Grille();
-        grille.paintGrille(g, getWidth(), getHeight());
-               
-        paintEDTGrille(g, getWidth(), getHeight(), droitUser);
-       
-       
-    }
-    
-    /**
-     * Fonction d'ajout graphique des cours sur l'emploi du temps
-     * @param g le Graphics utilisé par paintComponent
-     * @param x x qui sera remplacé par getWidth()
-     * @param y y qui sera ramplacé par getHeight()
-     * @param user L'utilisateur
-     */
-    public void paintEDTGrille(Graphics g, int x, int y, int droit){
+     public void paintEDTGrille(Graphics g, int x, int y, int droit){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
         long timestamp1 = timestamp.getTime(); //Timestamp forme long int
 
@@ -275,6 +210,5 @@ public class EDTGrille extends JPanel{
         }
         
     }
-  
     
 }

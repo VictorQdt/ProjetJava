@@ -42,7 +42,7 @@ public class MainContainer extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setAlwaysOnTop(false);
-
+        this.setResizable(false);
         this.idUtilisateur = idUtilisateur;
     }
     

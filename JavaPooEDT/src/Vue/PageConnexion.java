@@ -87,13 +87,7 @@ public class PageConnexion extends JFrame {
       }
     }
   }
-  
-  public MainContainer newFen(int id){
-      MainContainer fen = new MainContainer();
-      fen = new MainContainer(id);
-      return fen;
-  }
-    
+      
    public static void main(String[] args) {
 
             new PageConnexion();
