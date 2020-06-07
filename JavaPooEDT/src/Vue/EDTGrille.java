@@ -29,6 +29,7 @@ public class EDTGrille extends JPanel{
     
     private int idUser;
     private int nbWeek;
+    private int idSemaine;
     private final Calendar calendar = Calendar.getInstance();
     private String infos22;
     private int droitUser;
@@ -50,10 +51,14 @@ public class EDTGrille extends JPanel{
         this.nbWeek = nbWeek;
     }
     
-    public EDTGrille(int idUser, int droit){
+    public EDTGrille(int idUser, int droit, int semaineAct){
         this.idUser = idUser;
         this.droitUser = droit;
+        this.idSemaine = semaineAct;
         this.setLayout(null);
+        
+            
+        
         
     }
     
@@ -82,7 +87,7 @@ public class EDTGrille extends JPanel{
         Grille grille = new Grille();
         grille.paintGrille(g, getWidth(), getHeight());
                
-        paintEDTGrille(g, getWidth(), getHeight(), droitUser);
+        paintEDTGrille(g, getWidth(), getHeight(), droitUser,idSemaine);
        
        
     }
@@ -94,7 +99,7 @@ public class EDTGrille extends JPanel{
      * @param y y qui sera ramplacé par getHeight()
      * @param user L'utilisateur
      */
-    public void paintEDTGrille(Graphics g, int x, int y, int droit){
+    public void paintEDTGrille(Graphics g, int x, int y, int droit, int semaineAct){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
         long timestamp1 = timestamp.getTime(); //Timestamp forme long int
 
@@ -150,6 +155,8 @@ public class EDTGrille extends JPanel{
             int heure = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
             int semaine = calendar.get(Calendar.WEEK_OF_YEAR);
+            if(semaine == semaineAct){
+                
             double start = (heure + (minute * 0.016667) - 8);
             
             double Ystart = (uniteY * start);
@@ -228,8 +235,7 @@ public class EDTGrille extends JPanel{
                 phrase = phrase + listeInfos.get(j);
             }
              
-            g.setColor(Color.black);
-            g.setFont(new Font("TimesRoman", Font.BOLD, (getHeight()*getWidth())/100000));
+            
             phrase = phrase + "</div></html>";
             phrase2 = phrase2 + "</div></html>";
             
@@ -268,13 +274,16 @@ public class EDTGrille extends JPanel{
             add(lab);
             }
             
-            
+            }
             
             liste.remove(0);
+                
             
+            
+        }
         }
         
     }
   
     
-}
+

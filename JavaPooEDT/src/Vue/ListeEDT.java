@@ -32,6 +32,7 @@ public class ListeEDT extends JPanel {
 
     int idUser;
     Calendar calendar = Calendar.getInstance();
+    int semaineAct;
 
     public ListeEDT() {
         repaint();
@@ -52,10 +53,10 @@ public class ListeEDT extends JPanel {
 
     }
 
-    public ListeEDT(/*Graphics g,*/int identifiant, int droit) {
+    public ListeEDT(/*Graphics g,*/int identifiant, int droit, int semaine2) {
 
         this.idUser = identifiant;
-        
+        this.semaineAct = semaine2;
         
         int compteurLun = 0;
         int compteurMar = 0;
@@ -132,7 +133,9 @@ public class ListeEDT extends JPanel {
             Date t = new Date(time.getTime());
             calendar.setTime(t);
             int jour = calendar.get(Calendar.DAY_OF_WEEK) - 1;
-            switch (jour) {
+            int semaine = calendar.get(Calendar.WEEK_OF_YEAR);
+            if (semaine == semaineAct){
+                switch (jour) {
                 case 1:
                     lundi.add(liste.get(0));
                     compteurLun++;
@@ -161,6 +164,8 @@ public class ListeEDT extends JPanel {
                     break;
                     
             }
+            }
+            
            
             
 
@@ -196,6 +201,7 @@ public class ListeEDT extends JPanel {
         sam.setBackground(Color.YELLOW);
         sam.setOpaque(true);
         add(sam);
+        ajoutCours(samedi);
     }
     
     
@@ -217,7 +223,7 @@ public class ListeEDT extends JPanel {
             calendar.setTime(t);
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int min = calendar.get(Calendar.MINUTE);
-            
+            int week = calendar.get(Calendar.WEEK_OF_YEAR);
             horaire = String.valueOf(hour) + "h" + String.valueOf(min) + " - ";
             
             int i = 1; // Durée
@@ -275,9 +281,6 @@ public class ListeEDT extends JPanel {
                 }
                 phrase = phrase + listeInfos.get(j);
             }
-
-            //g.setColor(Color.black);
-            //g.setFont(new Font("TimesRoman", Font.BOLD, (getHeight() * getWidth()) / 100000));
             
             phrase2 = phrase2 + "</html>";
 
@@ -306,6 +309,7 @@ public class ListeEDT extends JPanel {
                 lab.setBackground(couleur);
                 lab.setToolTipText("Ce cours a été annulé");
                 add(lab);
+                
             }
         liste.remove(0);
     }
