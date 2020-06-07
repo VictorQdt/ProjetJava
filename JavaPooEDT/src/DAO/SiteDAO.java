@@ -16,6 +16,10 @@ import model.Site;
  */
 public class SiteDAO extends DAO<Site>{
     
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public SiteDAO(Connexion connect) {
         super(connect);
     }

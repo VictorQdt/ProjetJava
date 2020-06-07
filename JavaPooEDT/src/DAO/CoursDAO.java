@@ -18,6 +18,10 @@ import model.Cours;
  */
 public class CoursDAO extends DAO<Cours>{
     
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public CoursDAO(Connexion connect) {
         super(connect);
     }
@@ -37,6 +41,9 @@ public class CoursDAO extends DAO<Cours>{
         return cours;
     }
     
+    /** 
+     * @return liste
+     */
     public ArrayList<String> rechercheTot(){
         ArrayList<String> liste;
         liste = new ArrayList<>();

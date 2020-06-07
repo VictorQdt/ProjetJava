@@ -23,6 +23,10 @@ import model.Promotion;
 
 public class PromotionDAO extends DAO<Promotion>{
     
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public PromotionDAO(Connexion connect) {
         super(connect);
     }
@@ -41,6 +45,11 @@ public class PromotionDAO extends DAO<Promotion>{
         
         return promo;
     }
+    
+    /**
+     * Trouve l'ID de la promo grâce au nom
+     * @param nomPromo
+     */
     public Promotion findId(String nomPromo){
         
         Promotion promo = new Promotion();

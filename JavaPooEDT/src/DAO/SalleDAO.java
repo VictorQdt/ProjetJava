@@ -20,6 +20,10 @@ import model.Salle;
 
 public class SalleDAO extends DAO<Salle>{
     
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public SalleDAO(Connexion connect) {
         super(connect);
     }

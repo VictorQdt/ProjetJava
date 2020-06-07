@@ -16,6 +16,10 @@ import model.Etudiant;
  * @author victo
  */
 public class EtudiantDAO extends DAO<Etudiant>{
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public EtudiantDAO(Connexion connect) {
         super(connect);
     }
