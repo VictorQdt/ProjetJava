@@ -14,6 +14,15 @@ public class InfoCours {
   private String nom, duree, ID_Cours, ID_Type, date;
 
   public InfoCours(){}
+  
+  /**
+     *
+     * @param nom
+     * @param duree
+     * @param ID_Cours
+     * @param ID_Type
+     * @param date
+     */
   public InfoCours(String nom, String duree, String ID_Cours, String ID_Type, String date){
     this.nom = nom;
     this.duree = duree;

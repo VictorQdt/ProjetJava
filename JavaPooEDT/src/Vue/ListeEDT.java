@@ -53,6 +53,12 @@ public class ListeEDT extends JPanel {
 
     }
 
+    /**
+     *
+     * @param identifiant
+     * @param droit
+     * @param semaine2
+     */
     public ListeEDT(/*Graphics g,*/int identifiant, int droit, int semaine2) {
 
         this.idUser = identifiant;
@@ -205,6 +211,10 @@ public class ListeEDT extends JPanel {
     }
     
     
+    /**
+     *
+     * @param liste
+     */
     public void ajoutCours(ArrayList<Object> liste){
             
             while(!liste.isEmpty()){

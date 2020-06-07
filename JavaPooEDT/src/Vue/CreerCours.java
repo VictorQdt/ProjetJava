@@ -55,6 +55,12 @@ public class CreerCours extends JDialog {
     private JTextField nom, date;
     private ArrayList<String> nomDesGroupes;
 
+    /**
+     *
+     * @param parent
+     * @param title
+     * @param modal
+     */
     public CreerCours(JFrame parent, String title, boolean modal) {
         super(parent, title, modal);
         this.setSize(800, 800);
@@ -226,6 +232,10 @@ public class CreerCours extends JDialog {
                 setVisible(false);
             }
 
+            /**
+     *
+     * @return
+     */
             public String getAge() {
                 return (tranche1.isSelected()) ? tranche1.getText()
                         : (tranche2.isSelected()) ? tranche2.getText()
@@ -251,6 +261,10 @@ public class CreerCours extends JDialog {
         this.getContentPane().add(control, BorderLayout.SOUTH);
     }
 
+    /**
+     *
+     * @return liste
+     */
     public ArrayList<JPanel> choixGroupes() {
 
         JComboBox ID_Promo = new JComboBox();

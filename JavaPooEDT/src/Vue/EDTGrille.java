@@ -35,22 +35,44 @@ public class EDTGrille extends JPanel{
     private int droitUser;
     
 
+    /**
+     *
+     * @return idUser
+     */
     public int getIdUser() {
         return idUser;
     }
 
+    /**
+     *
+     * @param idUser
+     */
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
+    /**
+     *
+     * @return nbWeek
+     */
     public int getNbWeek() {
         return nbWeek;
     }
 
+    /**
+     *
+     * @param nbWeek
+     */
     public void setNbWeek(int nbWeek) {
         this.nbWeek = nbWeek;
     }
     
+    /**
+     *
+     * @param idUser
+     * @param droit
+     * @param semaineAct
+     */
     public EDTGrille(int idUser, int droit, int semaineAct){
         this.idUser = idUser;
         this.droitUser = droit;
@@ -71,6 +93,9 @@ public class EDTGrille extends JPanel{
     /**
      * Fonction de aioobe sur stackoverflow https://stackoverflow.com/questions/4413132/problems-with-newline-in-graphics2d-drawstring qui permet le retour à la ligne dans les drawstring
      * @param g
+     * @param text
+     * @param x
+     * @param y
      */
     void drawString(Graphics g, String text, int x, int y) {
     for (String line : text.split("\n"))
@@ -97,7 +122,8 @@ public class EDTGrille extends JPanel{
      * @param g le Graphics utilisé par paintComponent
      * @param x x qui sera remplacé par getWidth()
      * @param y y qui sera ramplacé par getHeight()
-     * @param user L'utilisateur
+     * @param droit
+     * @param semaineAct
      */
     public void paintEDTGrille(Graphics g, int x, int y, int droit, int semaineAct){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date

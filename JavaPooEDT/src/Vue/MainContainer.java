@@ -32,14 +32,27 @@ public class MainContainer extends JFrame {
     int affAct = 1;
     int droitEnCours;
 
+    /**
+     *
+     * @return userEnCours
+     */
     public Utilisateur getUserEnCours() {
         return userEnCours;
     }
 
+    /**
+     *
+     * @param userEnCours2
+     */
     public void setUserEnCours(Utilisateur userEnCours2) {
         this.userEnCours = userEnCours2;
     }
 
+    /**
+     *
+     * @param idUtilisateur
+     * @param droitUser
+     */
     public MainContainer(int idUtilisateur, int droitUser) {
 
         /*MenuBar bar = new MenuBar();
@@ -61,26 +74,50 @@ public class MainContainer extends JFrame {
 
     }
 
+    /**
+     *
+     * @return idUtilisateur
+     */
     public int getIdUtilisateur() {
         return idUtilisateur;
     }
 
+    /**
+     *
+     * @param idUtilisateur
+     */
     public void setIdUtilisateur(int idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
 
+    /**
+     *
+     * @return idSemaine
+     */
     public int getIdSemaine() {
         return idSemaine;
     }
 
+    /**
+     *
+     * @param idSemaine
+     */
     public void setIdSemaine(int idSemaine) {
         this.idSemaine = idSemaine;
     }
 
+    /**
+     *
+     * @return droit
+     */
     public int getDroitUtilisateur() {
         return userEnCours.getDroit();
     }
 
+    /**
+     *
+     * @param user22
+     */
     public void grilleEdt(Utilisateur user22) {
 
         EDTGrille edt = new EDTGrille(user22.getId(), user22.getDroit(), idSemaine);
@@ -88,7 +125,11 @@ public class MainContainer extends JFrame {
         this.revalidate();
 
     }
-
+    
+    /**
+     *
+     * @param userrr
+     */
     public void listeEDT(Utilisateur userrr) {
 
         ListeEDT liste = new ListeEDT(userrr.getId(), userrr.getDroit(), idSemaine);
@@ -99,6 +140,10 @@ public class MainContainer extends JFrame {
         this.revalidate();
     }
 
+    /**
+     *
+     * @return menuBar
+     */
     public JMenuBar creerMenuBar() { // Constructeur de la barre de menu
         JMenuBar menuBar = new JMenuBar();
 
