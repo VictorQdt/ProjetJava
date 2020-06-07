@@ -22,7 +22,7 @@ public class Fenetre extends JFrame {
   public Fenetre(){      
     this.setTitle("Nouveau Cours");
     this.setSize(400, 100);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     this.setLocationRelativeTo(null);      
     this.getContentPane().setLayout(new FlowLayout());
     this.getContentPane().add(bouton);
@@ -31,7 +31,7 @@ public class Fenetre extends JFrame {
         CreerCours courstest = new CreerCours(null, "Description du cours", true);
         InfoCours Cours = courstest.showCreerCours(); 
         JOptionPane jop = new JOptionPane();
-        jop.showMessageDialog(null, Cours.toString(), "Informations nouveau cours", JOptionPane.INFORMATION_MESSAGE);
+
       }         
     });      
     this.setVisible(true);      

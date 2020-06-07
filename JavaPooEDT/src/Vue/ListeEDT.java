@@ -301,7 +301,7 @@ public class ListeEDT extends JPanel {
                 lab.setToolTipText(phrase);
                add(lab);
 
-            } else {
+            } else if(etat == 1) {
                 
                 String phrase3 = phrase + " - ANNULE </html>";           
                 JLabel lab = new JLabel(phrase3, SwingConstants.CENTER);
@@ -310,6 +310,13 @@ public class ListeEDT extends JPanel {
                 lab.setToolTipText("Ce cours a été annulé");
                 add(lab);
                 
+            } else if (etat == 2) {
+                String phrase3 = phrase + " - A VALIDER </html>";           
+                JLabel lab = new JLabel(phrase3, SwingConstants.CENTER);
+                lab.setOpaque(true);
+                lab.setBackground(couleur);
+                lab.setToolTipText("Ce cours a été annulé");
+                add(lab);
             }
         liste.remove(0);
     }

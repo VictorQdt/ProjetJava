@@ -59,8 +59,7 @@ public class Main {
             MainContainer fenetre = new MainContainer(user.getId(), user.getDroit());
             fenetre.setUserEnCours(user);
             fenetre.grilleEdt(user);
-            System.out.print(user.getDroit());
-            //fenetre.listeEDT(user);
+           
             
         }
     }

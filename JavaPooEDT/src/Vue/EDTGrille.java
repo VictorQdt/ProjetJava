@@ -258,7 +258,7 @@ public class EDTGrille extends JPanel{
             lab.setToolTipText(phrase);
             add(lab);
               
-            } else {
+            } else if (etat == 1){
                 JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>ANNULÉ</div></html>",SwingConstants.CENTER);
                 lab2.setOpaque(true);
                 lab2.setBackground(Color.WHITE);
@@ -271,6 +271,20 @@ public class EDTGrille extends JPanel{
             lab.setBackground(couleur);
             lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart)+1 + larg2, uniteX-1, (int) (uniteY * duree)-1);
             lab.setToolTipText("Ce cours a été annulé");
+            add(lab);
+            } else if (etat == 2 && droitUser != 4){
+                JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>A VALIDER</div></html>",SwingConstants.CENTER);
+                lab2.setOpaque(true);
+                lab2.setBackground(Color.WHITE);
+                lab2.setForeground(Color.RED);
+                lab2.setBounds((uniteX * jour) + larg2+uniteX/10, ((int) Ystart) + larg2 + uniteY/10, uniteX-2*uniteX/10, (int) uniteY - 6*uniteY/10);
+                add(lab2);
+                JLabel lab = new JLabel((String) test.get(3),SwingConstants.CENTER);
+            lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
+            lab.setOpaque(true);
+            lab.setBackground(couleur);
+            lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart)+1 + larg2, uniteX-1, (int) (uniteY * duree)-1);
+            lab.setToolTipText(phrase + " - A VALIDER");
             add(lab);
             }
             

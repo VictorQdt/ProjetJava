@@ -8,6 +8,7 @@ package DAO;
 import Controlleur.Connexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Type_Cours;
 
 /**
@@ -33,6 +34,19 @@ public class Type_CoursDAO extends DAO<Type_Cours>{
         }
         
         return typecours;
+    }
+    
+    public ArrayList<Integer> rechercheTot(){
+        ArrayList<Integer> liste;
+        liste = new ArrayList<>();
+        try {
+            ResultSet rset = con.getStmt().executeQuery("select ID_Type from type_cours");
+            while(rset.next()){
+                liste.add(rset.getInt("ID_Type"));
+            }
+        } catch (SQLException ex) {
+        }
+        return liste;
     }
     
 }

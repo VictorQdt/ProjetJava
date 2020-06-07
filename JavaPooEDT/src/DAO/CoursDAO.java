@@ -8,6 +8,7 @@ package DAO;
 import Controlleur.Connexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Cours;
 
 
@@ -34,6 +35,21 @@ public class CoursDAO extends DAO<Cours>{
         }
         
         return cours;
+    }
+    
+    public ArrayList<String> rechercheTot(){
+        ArrayList<String> liste;
+        liste = new ArrayList<>();
+        try {
+            ResultSet rset = con.getStmt().executeQuery("select nom from cours");
+            
+            while(rset.next()){
+                
+                liste.add(rset.getString("nom"));
+            }
+        } catch (SQLException ex) {
+        }
+        return liste;
     }
     
 }
