@@ -42,54 +42,106 @@ public class Seance {
     
     public Seance () {}
     
+    /**
+     *
+     * @return id
+     */
     public int getId() {
         return id;
      }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
       this.id = id;
     }
     
+    /**
+     *
+     * @return duree
+     */
     public float getDuree(){
         return duree;
     }
 
+    /**
+     *
+     * @return semaine
+     */
     public int getSemaine() {
         return semaine;
     }
 
+    /**
+     *
+     * @param semaine
+     */
     public void setSemaine(int semaine) {
         this.semaine = semaine;
     }
 
+    /**
+     *
+     * @return date
+     */
     public long getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(long date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return etat
+     */
     public int getEtat() {
         return etat;
     }
 
+    /**
+     *
+     * @param etat
+     */
     public void setEtat(int etat) {
         this.etat = etat;
     }
 
+    /**
+     *
+     * @return id_cours
+     */
     public int getId_cours() {
         return id_cours;
     }
-
+    
+    /**
+     *
+     * @param id_cours
+     */
     public void setId_cours(int id_cours) {
         this.id_cours = id_cours;
     }
 
+    /**
+     *
+     * @return id_type
+     */
     public int getId_type() {
         return id_type;
     }
 
+    /**
+     *
+     * @param id_type
+     */
     public void setId_type(int id_type) {
         this.id_type = id_type;
     }

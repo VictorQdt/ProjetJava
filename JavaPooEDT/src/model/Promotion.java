@@ -9,23 +9,24 @@ package model;
  *
  * @author Paul
  */
-public class Site {
+public class Promotion {
+    
     private int id = 0;
     private String nom = "";
     
     /**
-     *
+     * Constructeur de Promotion
      * @param id
      * @param nom
      */
-    public Site (int id, String nom){
+    public Promotion (int id, String nom){
         this.id = id;
         this.nom = nom;
     }
     
-    public Site () {}
+    public Promotion () {}
     
-    /**
+     /**
      *
      * @return id
      */
@@ -48,7 +49,7 @@ public class Site {
     public String getNom() {
         return nom;
       }
-
+    
     /**
      *
      * @param nom
@@ -56,6 +57,4 @@ public class Site {
     public void setNom(String nom) {
       this.nom = nom;
     }
-    
-    
 }

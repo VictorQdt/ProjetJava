@@ -17,6 +17,12 @@ public class Groupe {
     private String nom = "";
     private int id_promo;
     
+    /**
+     * Constructeur de Groupe
+     * @param id
+     * @param nom
+     * @param id_promo
+     */
     public Groupe (int id, String nom, int id_promo){
         this.id_promo = id_promo;
         this.id = id;
@@ -25,27 +31,52 @@ public class Groupe {
     
     public Groupe () {}
 
+    /**
+     *
+     * @return id_promo
+     */
     public int getId_promo() {
         return id_promo;
     }
 
+    /**
+     *
+     * @param id_promo
+     */
     public void setId_promo(int id_promo) {
         this.id_promo = id_promo;
     }
     
     
     
+    /**
+     *
+     * @return id
+     */
     public int getId() {
         return id;
      }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
       this.id = id;
     }
+    
+    /**
+     *
+     * @return nom
+     */
     public String getNom() {
         return nom;
       }
-
+    
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
       this.nom = nom;
     }

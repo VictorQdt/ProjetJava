@@ -19,23 +19,44 @@ public class Seance_salles {
         ID_Salle = 0;       
     }
     
+    /**
+     *
+     * @param ID_Seance
+     * @param ID_Salle
+     */
     public Seance_salles(int ID_Seance, int ID_Salle){
         this.ID_Seance = ID_Seance;
         this.ID_Salle = ID_Salle;
     }
 
+    /**
+     *
+     * @return ID_Seance
+     */
     public int getID_Seance() {
         return ID_Seance;
     }
 
+    /**
+     *
+     * @param ID_Seance
+     */
     public void setID_Seance(int ID_Seance) {
         this.ID_Seance = ID_Seance;
     }
 
+    /**
+     *
+     * @return ID_Salle
+     */
     public int getID_Salle() {
         return ID_Salle;
     }
 
+    /**
+     *
+     * @param ID_Salle
+     */
     public void setID_Salle(int ID_Salle) {
         this.ID_Salle = ID_Salle;
     }

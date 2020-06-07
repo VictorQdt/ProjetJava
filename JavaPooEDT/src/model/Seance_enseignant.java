@@ -19,23 +19,44 @@ public class Seance_enseignant {
         ID_Enseignant = 0;       
     }
     
+    /**
+     *
+     * @param ID_Seance
+     * @param ID_Enseignant
+     */
     public Seance_enseignant(int ID_Seance, int ID_Enseignant){
         this.ID_Seance = ID_Seance;
         this.ID_Enseignant = ID_Enseignant;
     }
 
+    /**
+     *
+     * @return ID_Seance
+     */
     public int getID_Seance() {
         return ID_Seance;
     }
 
+    /**
+     *
+     * @param ID_Seance
+     */
     public void setID_Seance(int ID_Seance) {
         this.ID_Seance = ID_Seance;
     }
 
+    /**
+     *
+     * @return ID_Enseignant
+     */
     public int getID_Enseignant() {
         return ID_Enseignant;
     }
 
+    /**
+     *
+     * @param ID_Enseignant
+     */
     public void setID_Enseignant(int ID_Enseignant) {
         this.ID_Enseignant = ID_Enseignant;
     }

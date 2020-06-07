@@ -23,6 +23,15 @@ public class Utilisateur {
   //Droit de l'utilisateur
   private int droit =0;
    
+  /**
+     *
+     * @param id
+     * @param email
+     * @param pwd
+     * @param nom
+     * @param prenom
+     * @param droit
+     */
   public Utilisateur (int id, String email, String pwd, String nom, 
           String prenom, int droit) {
     this.id = id;
@@ -33,56 +42,101 @@ public class Utilisateur {
     this.droit = droit;
   }
 
+  /**
+     *
+     * @return droit
+     */
     public int getDroit() {
         return droit;
     }
   
   public Utilisateur () {}
      
+  /**
+     *
+     * @return id
+     */
   public int getId() {
     return id;
   }
 
+  /**
+     *
+     * @param id
+     */
   public void setId(int id) {
     this.id = id;
   }
   
-  public int setDroit() {
-    return droit;
-  }
 
+/**
+     *
+     * @param droit
+     */
   public void setDroit(int droit) {
     this.droit = droit;
   }
 
+  /**
+     *
+     * @return nom
+     */
   public String getNom() {
     return nom;
   }
 
+  /**
+     *
+     * @param nom
+     */
   public void setNom(String nom) {
     this.nom = nom;
   }
 
+  /**
+     *
+     * @return prenom
+     */
   public String getPrenom() {
     return prenom;
   }
 
+  /**
+     *
+     * @param prenom
+     */
   public void setPrenom(String prenom) {
     this.prenom = prenom;
   } 
 
+  /**
+     *
+     * @return email
+     */
   public String getEmail() {
     return email;
   }
 
+  /**
+     *
+     * @param email
+     */
   public void setEmail(String email) {
     this.email = email;
   }
 
+  /**
+     *
+     * @return pwd
+     */
   public String getPwd() {
     return pwd;
   }
 
+  /**
+     *
+     * @param pwd
+     */
   public void setPwd(String pwd) {
     this.pwd = pwd;
   }  
