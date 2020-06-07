@@ -18,10 +18,18 @@ import model.Seance_enseignant;
  */
 public class Seance_enseignantsDAO extends DAO<Seance_enseignant> {
 
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public Seance_enseignantsDAO (Connexion connect) {
         super(connect);
     }
 
+    /**
+     * @param id
+     * @param idSeance
+     */
     public Seance_enseignant find(int id, int idSeance) {
         Seance_enseignant seance_enseignant = new Seance_enseignant();
 

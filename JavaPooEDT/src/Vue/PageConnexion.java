@@ -40,16 +40,28 @@ public class PageConnexion extends JFrame {
     Utilisateur utilisateur;
     int idUser;
 
+    /**
+     *
+     * @return idUser
+     */
     public int getIdUser() {
         return idUser;
     }
 
+    /**
+     *
+     * @param idUser
+     */
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
     
     
 
+    /**
+     *
+     * Constructeur Page de Connexion
+     */
   public PageConnexion(){
         try {
             connect = new Connexion();

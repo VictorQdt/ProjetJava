@@ -25,10 +25,6 @@ import model.Seance;
 public class SeanceDAO extends DAO<Seance>{
     private final Calendar calendar = Calendar.getInstance();
     
-    /**
-     * Constructeur 
-     * @param connect
-     */
     public SeanceDAO(Connexion connect) {
         super(connect);
     }
@@ -49,17 +45,6 @@ public class SeanceDAO extends DAO<Seance>{
         return seance;
     }
     
-    /**
-     * @param date
-     * @param duree
-     * @param etat
-     * @param ID_Cours
-     * @param ID_Type
-     * @param ID_Prof
-     * @param ID_Groupe
-     * @param ID_Salle
-     * @return boolean
-     */
     public boolean ajouter(long date, double duree, int etat, int ID_Cours, int ID_Type, ArrayList<Integer> ID_Prof, ArrayList<Integer> ID_Groupe
     , ArrayList<Integer> ID_Salle){
         Seance seance = new Seance();
@@ -373,9 +358,7 @@ public class SeanceDAO extends DAO<Seance>{
         }
     }
     
-   /**
-     * @param id
-     */
+   
     public void modifier(int id){
         Seance seance = new Seance();
         
@@ -391,9 +374,6 @@ public class SeanceDAO extends DAO<Seance>{
       
     }
     
-   /**
-     * @param id
-     */ 
     public void annuler(int id){
         
         
@@ -406,9 +386,6 @@ public class SeanceDAO extends DAO<Seance>{
       
     }
     
-    /**
-     * @param id
-     */ 
     public void valider(int id){
         
         
@@ -422,9 +399,6 @@ public class SeanceDAO extends DAO<Seance>{
     }
     
 
-    /**
-     * @param id
-     */ 
     public void supprimer(int id){
         
         

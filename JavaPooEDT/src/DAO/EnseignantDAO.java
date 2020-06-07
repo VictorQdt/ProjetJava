@@ -18,10 +18,19 @@ import model.Enseignant;
  */
 public class EnseignantDAO extends DAO<Enseignant> {
 
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public EnseignantDAO(Connexion connect) {
         super(connect);
     }
 
+    /**
+     * @param id
+     * @param idCours
+     * @return ensaignant
+     */
     public Enseignant find(int id, int idCours) {
         Enseignant enseignant = new Enseignant();
 

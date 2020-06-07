@@ -53,6 +53,12 @@ public class ListeEDT extends JPanel {
 
     }
 
+    /**
+     *
+     * @param identifiant
+     * @param droit
+     * @param semaine2
+     */
     public ListeEDT(/*Graphics g,*/int identifiant, int droit, int semaine2) {
 
         this.idUser = identifiant;
@@ -205,6 +211,10 @@ public class ListeEDT extends JPanel {
     }
     
     
+    /**
+     *
+     * @param liste
+     */
     public void ajoutCours(ArrayList<Object> liste){
             
             while(!liste.isEmpty()){
@@ -301,7 +311,7 @@ public class ListeEDT extends JPanel {
                 lab.setToolTipText(phrase);
                add(lab);
 
-            } else {
+            } else if(etat == 1) {
                 
                 String phrase3 = phrase + " - ANNULE </html>";           
                 JLabel lab = new JLabel(phrase3, SwingConstants.CENTER);
@@ -310,6 +320,13 @@ public class ListeEDT extends JPanel {
                 lab.setToolTipText("Ce cours a été annulé");
                 add(lab);
                 
+            } else if (etat == 2) {
+                String phrase3 = phrase + " - A VALIDER </html>";           
+                JLabel lab = new JLabel(phrase3, SwingConstants.CENTER);
+                lab.setOpaque(true);
+                lab.setBackground(couleur);
+                lab.setToolTipText("Ce cours a été annulé");
+                add(lab);
             }
         liste.remove(0);
     }

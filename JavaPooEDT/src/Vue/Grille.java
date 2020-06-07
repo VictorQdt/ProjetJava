@@ -32,6 +32,12 @@ public class Grille {
     private final Calendar calendar = Calendar.getInstance();
 
 
+    /**
+     *
+     * @param g
+     * @param x
+     * @param y
+     */
     public void paintGrille(Graphics g, int x, int y) {
         
       

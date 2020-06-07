@@ -18,10 +18,19 @@ import model.Seance_groupe;
  */
 public class Seance_groupeDAO extends DAO<Seance_groupe>{
     
+    /**
+     * Constructeur 
+     * @param connect
+     */
     public Seance_groupeDAO(Connexion connect) {
         super(connect);
     }
 
+    /** 
+     * @param connect
+     * @param idSeance
+     * @return Seance_groupe
+     */
     public Seance_groupe find(int id, int idSeance) {
         Seance_groupe Seance_groupe = new Seance_groupe();
 

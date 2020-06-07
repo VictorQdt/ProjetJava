@@ -16,10 +16,6 @@ import model.Utilisateur;
  */
 public class UtilisateurDAO extends DAO<Utilisateur>{
     
-    /**
-     * Constructeur 
-     * @param connect
-     */
     public UtilisateurDAO(Connexion connect) {
         super(connect);
     }
@@ -40,11 +36,6 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         return utilisateur;
     }
     
-    /**
-     * @param email
-     * @param pwd
-     * @return utilisateur
-     */
     public Utilisateur findLogin(String email, String pwd){
         Utilisateur utilisateur = new Utilisateur();
   

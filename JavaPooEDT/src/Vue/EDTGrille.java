@@ -35,22 +35,44 @@ public class EDTGrille extends JPanel{
     private int droitUser;
     
 
+    /**
+     *
+     * @return idUser
+     */
     public int getIdUser() {
         return idUser;
     }
 
+    /**
+     *
+     * @param idUser
+     */
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
+    /**
+     *
+     * @return nbWeek
+     */
     public int getNbWeek() {
         return nbWeek;
     }
 
+    /**
+     *
+     * @param nbWeek
+     */
     public void setNbWeek(int nbWeek) {
         this.nbWeek = nbWeek;
     }
     
+    /**
+     *
+     * @param idUser
+     * @param droit
+     * @param semaineAct
+     */
     public EDTGrille(int idUser, int droit, int semaineAct){
         this.idUser = idUser;
         this.droitUser = droit;
@@ -71,6 +93,9 @@ public class EDTGrille extends JPanel{
     /**
      * Fonction de aioobe sur stackoverflow https://stackoverflow.com/questions/4413132/problems-with-newline-in-graphics2d-drawstring qui permet le retour à la ligne dans les drawstring
      * @param g
+     * @param text
+     * @param x
+     * @param y
      */
     void drawString(Graphics g, String text, int x, int y) {
     for (String line : text.split("\n"))
@@ -97,7 +122,8 @@ public class EDTGrille extends JPanel{
      * @param g le Graphics utilisé par paintComponent
      * @param x x qui sera remplacé par getWidth()
      * @param y y qui sera ramplacé par getHeight()
-     * @param user L'utilisateur
+     * @param droit
+     * @param semaineAct
      */
     public void paintEDTGrille(Graphics g, int x, int y, int droit, int semaineAct){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Timestamp forme date
@@ -258,7 +284,7 @@ public class EDTGrille extends JPanel{
             lab.setToolTipText(phrase);
             add(lab);
               
-            } else {
+            } else if (etat == 1){
                 JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>ANNULÉ</div></html>",SwingConstants.CENTER);
                 lab2.setOpaque(true);
                 lab2.setBackground(Color.WHITE);
@@ -271,6 +297,20 @@ public class EDTGrille extends JPanel{
             lab.setBackground(couleur);
             lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart)+1 + larg2, uniteX-1, (int) (uniteY * duree)-1);
             lab.setToolTipText("Ce cours a été annulé");
+            add(lab);
+            } else if (etat == 2 && droitUser != 4){
+                JLabel lab2 = new JLabel ("<html><div style = 'text-align:center'>A VALIDER</div></html>",SwingConstants.CENTER);
+                lab2.setOpaque(true);
+                lab2.setBackground(Color.WHITE);
+                lab2.setForeground(Color.RED);
+                lab2.setBounds((uniteX * jour) + larg2+uniteX/10, ((int) Ystart) + larg2 + uniteY/10, uniteX-2*uniteX/10, (int) uniteY - 6*uniteY/10);
+                add(lab2);
+                JLabel lab = new JLabel((String) test.get(3),SwingConstants.CENTER);
+            lab.setSize(new Dimension(uniteX, (int) (uniteY * duree)));
+            lab.setOpaque(true);
+            lab.setBackground(couleur);
+            lab.setBounds((uniteX * jour) + larg2+1, ((int) Ystart)+1 + larg2, uniteX-1, (int) (uniteY * duree)-1);
+            lab.setToolTipText(phrase + " - A VALIDER");
             add(lab);
             }
             

@@ -164,6 +164,11 @@ public class InfosCours {
 
     }
 
+    /**
+     * Fonction qui recherche les cours en fonction de l'idProf
+     * @param  idProf
+     * @return liste
+     */
     public ArrayList<Object> rechercheCoursProf(int idProf) throws SQLException {
 
         Connexion connect;

@@ -10,53 +10,44 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Seance_salles;
+import model.Enseignant;
 
 /**
  *
  * @author victo
  */
-public class Seance_sallesDAO extends DAO<Seance_salles> {
+public class EnseignantDAO extends DAO<Enseignant> {
 
-    /**
-     * Constructeur 
-     * @param connect
-     */
-    public Seance_sallesDAO (Connexion connect) {
+    public EnseignantDAO(Connexion connect) {
         super(connect);
     }
 
-    /** 
-     * @param id
-     * @param idSeance
-     * @return seance_salles
-     */
-    public Seance_salles find(int id, int idSeance) {
-        Seance_salles seance_salles = new Seance_salles();
+    public Enseignant find(int id, int idCours) {
+        Enseignant enseignant = new Enseignant();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance_salles where ID_Salle = " + id + " and ID_Seance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select * from enseignant where ID_Enseignant = " + id + " and ID_Cours = " + idCours);
             if (rset.first()) {
-                seance_salles = new Seance_salles(id, rset.getInt("ID_Seance"));
+                enseignant = new Enseignant(id, rset.getInt("ID_Cours"));
             }
         } catch (SQLException ex) {
         }
 
-        return seance_salles;
+        return enseignant;
     }
     
     /**
-     * Fonction qui retourn une liste de tous les id des seances dans la salle dont l'id est passé en paramètre
+     * Fonction qui retourn une liste de tous les id des cours dispensés par l'id de l'enseignant passé en paramètre
      * @param id
      * @return 
      */
     
-    public ArrayList<Integer> findSeances(int id) {
+    public ArrayList<Integer> findCours(int id) {
         ArrayList<Integer> liste;
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_salles where ID_Salle = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Cours from enseignant where ID_Enseignant = " + id);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -75,16 +66,16 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
     }
     
     /**
-     * Fonction qui retourne une liste de tous les id des salles de la séance dont l'id est passé en paramètre
-     * @param idSeance
+     * Fonction qui retourne une liste de tous les id des enseignants du cours dont l'id est passé en paramètre
+     * @param idCours
      * @return 
      */
-    public ArrayList<Integer> findSalles(int idSeance) {
+    public ArrayList<Integer> findEnseignants(int idCours) {
         ArrayList<Integer> liste;
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Salle from seance_salles where ID_Seance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Enseignant from enseignant where ID_Cours = " + idCours);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -103,7 +94,7 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
     }
 
     @Override
-    public Seance_salles find(int id) {
+    public Enseignant find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

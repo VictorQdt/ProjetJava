@@ -21,10 +21,6 @@ import model.Groupe;
 
 public class GroupeDAO extends DAO<Groupe>{
     
-    /**
-     * Constructeur 
-     * @param connect
-     */
     public GroupeDAO(Connexion connect) {
         super(connect);
     }
@@ -44,10 +40,6 @@ public class GroupeDAO extends DAO<Groupe>{
         return groupe;
     }
     
-    /** 
-     * @param id
-     * @return liste
-     */
     public ArrayList<Integer> recherchesGroupesPromo(int id){
         ArrayList<Integer> liste;
         liste = new ArrayList<>();

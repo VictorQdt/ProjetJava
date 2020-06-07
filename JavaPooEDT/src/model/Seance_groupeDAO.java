@@ -10,43 +10,34 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Seance_salles;
+import model.Seance_groupe;
 
 /**
  *
  * @author victo
  */
-public class Seance_sallesDAO extends DAO<Seance_salles> {
-
-    /**
-     * Constructeur 
-     * @param connect
-     */
-    public Seance_sallesDAO (Connexion connect) {
+public class Seance_groupeDAO extends DAO<Seance_groupe>{
+    
+    public Seance_groupeDAO(Connexion connect) {
         super(connect);
     }
 
-    /** 
-     * @param id
-     * @param idSeance
-     * @return seance_salles
-     */
-    public Seance_salles find(int id, int idSeance) {
-        Seance_salles seance_salles = new Seance_salles();
+    public Seance_groupe find(int id, int idSeance) {
+        Seance_groupe Seance_groupe = new Seance_groupe();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select * from seance_salles where ID_Salle = " + id + " and ID_Seance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select * from seance_groupe where ID_Groupe = " + id + " and ID_Seance = " + idSeance);
             if (rset.first()) {
-                seance_salles = new Seance_salles(id, rset.getInt("ID_Seance"));
+                Seance_groupe = new Seance_groupe(id, rset.getInt("ID_Seance"));
             }
         } catch (SQLException ex) {
         }
 
-        return seance_salles;
+        return Seance_groupe;
     }
     
     /**
-     * Fonction qui retourn une liste de tous les id des seances dans la salle dont l'id est passé en paramètre
+     * Fonction qui retourn une liste de tous les id des seances du groupe dont l'id est passé en parmaètre
      * @param id
      * @return 
      */
@@ -56,7 +47,7 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_salles where ID_Salle = " + id);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Seance from seance_groupe where ID_Groupe = " + id);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -75,16 +66,16 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
     }
     
     /**
-     * Fonction qui retourne une liste de tous les id des salles de la séance dont l'id est passé en paramètre
+     * Fonction qui retourne une liste de tous les id des groupes de la séance dont l'id est passé en paramètre
      * @param idSeance
      * @return 
      */
-    public ArrayList<Integer> findSalles(int idSeance) {
+    public ArrayList<Integer> findGroupes(int idSeance) {
         ArrayList<Integer> liste;
         liste = new ArrayList<>();
 
         try {
-            ResultSet rset = con.getStmt().executeQuery("select ID_Salle from seance_salles where ID_Seance = " + idSeance);
+            ResultSet rset = con.getStmt().executeQuery("select ID_Groupe from seance_groupe where ID_Seance = " + idSeance);
             // récupération du résultat de l'ordre
             ResultSetMetaData rsetMeta = rset.getMetaData();
 
@@ -103,7 +94,9 @@ public class Seance_sallesDAO extends DAO<Seance_salles> {
     }
 
     @Override
-    public Seance_salles find(int id) {
+    public Seance_groupe find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+    
+
