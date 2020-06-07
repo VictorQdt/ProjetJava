@@ -23,18 +23,30 @@ public class Main {
     Utilisateur user;
     Connexion connect;
 
+    /**
+     * @return user
+     */
     public Utilisateur getUser() {
         return user;
     }
 
+    /**
+     * @param user
+     */
     public void setUser(Utilisateur user) {
         this.user = user;
     }
 
+    /**
+     * @return connect
+     */
     public Connexion getConnect() {
         return connect;
     }
 
+    /**
+     * @param connect
+     */
     public void setConnect(Connexion connect) {
         this.connect = connect;
     }
